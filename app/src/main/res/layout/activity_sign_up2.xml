@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:orientation="vertical"
+    tools:context=".SignUpActivity2">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="150dp"
+        android:src="@drawable/inbox" />
+
+    <TextView
+        android:id="@+id/hello_message"
+        android:layout_width="385dp"
+        android:layout_height="78dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/bungee"
+        android:gravity="center"
+        android:text="Check Email"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/small_message"
+        android:layout_width="361dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/alegreya_bold"
+        android:gravity="center"
+        android:text="Once Verified try to Log in!"
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
+
+
+    <Button
+        android:id="@+id/next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#272B2B"
+        android:fontFamily="@font/baloo"
+        android:layout_gravity="center"
+        android:text="Try to Log in"
+        android:textColor="@color/white" />
+
+</LinearLayout>

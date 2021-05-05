@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">MiniProject</string>
+
+    <string name="navigation_open">Open Navigation drawer</string>
+    <string name="navigation_close">Close Navigation drawer</string>
+</resources>
