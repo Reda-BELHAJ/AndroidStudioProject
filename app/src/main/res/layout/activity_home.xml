@@ -87,10 +87,10 @@
                             android:layout_toStartOf="@+id/image"
                             android:layout_toLeftOf="@+id/image"
                             android:fontFamily="@font/bungee"
-                            android:padding="45dp"
+                            android:padding="40dp"
                             android:text="Manage your missions and your account"
                             android:textColor="@color/white"
-                            android:textSize="12dp" />
+                            android:textSize="14dp" />
                     </RelativeLayout>
 
                 </com.google.android.material.card.MaterialCardView>

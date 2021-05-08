@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
                     if(checkRole( usernameText).equals("Professeur")) {
                         Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                         intent.putExtra("USER_NAME", usernameText);
+                        intent.putExtra("ROLE", checkRole( usernameText));
                         MainActivity.this.startActivity(intent);
                         overridePendingTransition(R.anim.slide_right, R.anim.slide_out_left);
                         finish();

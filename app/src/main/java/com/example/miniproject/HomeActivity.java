@@ -1,10 +1,9 @@
 package com.example.miniproject;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.RelativeLayout;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,7 +24,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     TextView message_welcome;
     MaterialCardView card1, card2, card3;
 
-    String username;
+    String username, role;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +35,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         int id = R.id.nav_home;
 
         username = getIntent().getExtras().getString("USER_NAME");
+        role = getIntent().getExtras().getString("ROLE");
 
         drawerLayout = findViewById(R.id.drawler_layout);
         navigationView = findViewById(R.id.nav_view);
@@ -44,6 +44,20 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         card1 = findViewById(R.id.card1);
         card2 = findViewById(R.id.card2);
         card3 = findViewById(R.id.card3);
+
+        card1.setOnClickListener(v -> {
+            gotoMissions();
+        });
+
+        card2.setOnClickListener(v -> {
+
+        });
+
+        card3.setOnClickListener(v -> {
+
+        });
+
+//        card1.setVisibility(View.GONE);
 
         message_welcome.setText("HELLO " + username.toUpperCase() +"!");
 
@@ -76,10 +90,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_home:
                 break;
             case R.id.nav_missions:
+                gotoMissions();
                 break;
             case R.id.nav_rembo:
                 break;
-
             case R.id.profile:
                 break;
             case R.id.logout:
@@ -93,5 +107,26 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.closeDrawer(GravityCompat.START);
 
         return true;
+    }
+
+    public void visibility(String role){
+        if(role == "Professeur"){
+            navigationView.getMenu().findItem(R.id.accounts).setVisible(false);
+            card3.setVisibility(View.GONE);
+
+        }else if(role == "ResponsableRH"){
+
+        }else if(role == "Superviseur"){
+
+        }
+    }
+
+    public void gotoMissions(){
+        Intent intent = new Intent(HomeActivity.this, MissionActivity.class);
+        intent.putExtra("USER_NAME", username);
+        intent.putExtra("ROLE", role);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_right, R.anim.slide_out_left);
+        finish();
     }
 }
