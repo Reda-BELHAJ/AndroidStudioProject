@@ -47,82 +47,169 @@
 
                 <TextView
                     android:id="@+id/message_welcome"
-                    android:layout_width="wrap_content"
-                    android:layout_height="115dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="71dp"
                     android:fontFamily="@font/bungee"
-                    android:text="HELLO THERE, WELCOME BACK"
+                    android:text="HELLO THERE!"
                     android:textColor="@color/black"
                     android:textSize="40sp" />
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card1"
+                    android:id="@+id/card"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="170dp"
                     android:layout_marginTop="20dp"
                     android:clipToPadding="true"
-                    app:cardElevation="0dp"
+                    android:clickable="true"
+                    app:cardBackgroundColor="#05210e"
+                    app:cardElevation="2dp"
+                    app:cardCornerRadius="24dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/image"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentBottom="true"
+                            app:srcCompat="@drawable/hero" />
+
+                        <TextView
+                            android:layout_width="159dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="9dp"
+                            android:layout_marginRight="9dp"
+                            android:layout_toStartOf="@+id/image"
+                            android:layout_toLeftOf="@+id/image"
+                            android:fontFamily="@font/bungee"
+                            android:padding="45dp"
+                            android:text="Manage your missions and your account"
+                            android:textColor="@color/white"
+                            android:textSize="12dp"/>
+                    </RelativeLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/small_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="34dp"
+                    android:fontFamily="@font/bungee"
+                    android:text="Try to go to:"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#7C7373"
+                    android:textSize="20dp" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card1"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="20dp"
+                    android:clipToPadding="true"
+                    android:clickable="true"
+                    app:cardBackgroundColor="#184d26"
+                    app:cardElevation="2dp"
                     app:cardCornerRadius="24dp">
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/background_card"/>
+                        android:layout_height="match_parent">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Missions"
-                        android:textSize="30dp"
-                        android:fontFamily="@font/bungee"
-                        android:textColor="@color/white"
-                        android:padding="10dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="70dp"
+                            android:fontFamily="@font/bungee"
+                            android:padding="10dp"
+                            android:text="Missions"
+                            android:textColor="@color/white"
+                            android:textSize="30dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/bungee"
+                            android:padding="10dp"
+                            android:text="Tap"
+                            android:textColor="@color/white"
+                            android:textSize="12dp"/>
+                    </RelativeLayout>
+
 
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/card2"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="80dp"
                     android:layout_marginTop="20dp"
                     android:clipToPadding="true"
-                    app:cardElevation="0dp"
+                    android:clickable="true"
+                    app:cardBackgroundColor="#400a1f"
+                    app:cardElevation="2dp"
                     app:cardCornerRadius="24dp">
+
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/background_card"/>
+                        android:layout_height="match_parent">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Refunds"
-                        android:textSize="30dp"
-                        android:fontFamily="@font/bungee"
-                        android:textColor="@color/white"
-                        android:padding="10dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="70dp"
+                            android:fontFamily="@font/bungee"
+                            android:padding="10dp"
+                            android:text="Refunds"
+                            android:textColor="@color/white"
+                            android:textSize="30dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/bungee"
+                            android:padding="10dp"
+                            android:text="Tap"
+                            android:textColor="@color/white"
+                            android:textSize="12dp"/>
+                    </RelativeLayout>
 
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/card3"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="80dp"
                     android:layout_marginTop="20dp"
                     android:clipToPadding="true"
-                    app:cardElevation="0dp"
+                    android:clickable="true"
+                    app:cardBackgroundColor="#10274d"
+                    app:cardElevation="2dp"
                     app:cardCornerRadius="24dp">
+
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/background_card"/>
+                        android:layout_height="match_parent">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Accounts"
-                        android:textSize="30dp"
-                        android:fontFamily="@font/bungee"
-                        android:textColor="@color/white"
-                        android:padding="10dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="70dp"
+                            android:fontFamily="@font/bungee"
+                            android:padding="10dp"
+                            android:text="Accounts"
+                            android:textColor="@color/white"
+                            android:textSize="30dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/bungee"
+                            android:padding="10dp"
+                            android:text="Tap"
+                            android:textColor="@color/white"
+                            android:textSize="12dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            />
+                    </RelativeLayout>
 
                 </com.google.android.material.card.MaterialCardView>
 

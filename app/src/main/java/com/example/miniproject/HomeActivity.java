@@ -23,7 +23,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     NavigationView navigationView;
     Toolbar toolbar;
     TextView message_welcome;
-    MaterialCardView card1;
+    MaterialCardView card1, card2, card3;
 
     String username;
 
@@ -42,8 +42,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         toolbar = findViewById(R.id.tool_bar);
         message_welcome = findViewById(R.id.message_welcome);
         card1 = findViewById(R.id.card1);
+        card2 = findViewById(R.id.card2);
+        card3 = findViewById(R.id.card3);
 
-        message_welcome.setText("HELLO " + username.toUpperCase() +", WELCOME BACK");
+        message_welcome.setText("HELLO " + username.toUpperCase() +"!");
 
         navigationView.bringToFront();
 
