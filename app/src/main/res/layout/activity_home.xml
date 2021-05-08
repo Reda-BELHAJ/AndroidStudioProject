@@ -71,15 +71,16 @@
 
                         <ImageView
                             android:id="@+id/image"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="178dp"
+                            android:layout_height="match_parent"
                             android:layout_alignParentTop="true"
                             android:layout_alignParentRight="true"
                             android:layout_alignParentBottom="true"
+                            android:layout_marginBottom="0dp"
                             app:srcCompat="@drawable/hero" />
 
                         <TextView
-                            android:layout_width="159dp"
+                            android:layout_width="227dp"
                             android:layout_height="match_parent"
                             android:layout_marginEnd="9dp"
                             android:layout_marginRight="9dp"
@@ -89,7 +90,7 @@
                             android:padding="45dp"
                             android:text="Manage your missions and your account"
                             android:textColor="@color/white"
-                            android:textSize="12dp"/>
+                            android:textSize="12dp" />
                     </RelativeLayout>
 
                 </com.google.android.material.card.MaterialCardView>
