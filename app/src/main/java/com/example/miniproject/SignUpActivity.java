@@ -198,7 +198,10 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     public void sendEmail(String emailText ,String fullnameText,String usernameText,String passwordText){
-        String message = "Hey " + fullnameText + ",Here's your UserName: "+ usernameText + ",And Here's your PassWord: " + passwordText;
+        String message = "Hey " + fullnameText + ",\nWe are happy you signed up for Mini-Projet, your request has been verified." +
+                "\nHere's your UserName: "+ usernameText + ",And Here's your PassWord: " + passwordText +
+                "\nWelcome to Mini-Projet!"+
+                "Mini-Projet Team";
         send = new JavaMailAPI(this , emailText, "Email Validation", message);
         send.execute();
     }
@@ -213,8 +216,8 @@ public class SignUpActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        if (send != null && (send.getStatus() == AsyncTask.Status.RUNNING)) {
-            send.cancel(true);
+        if (send != null && send.getmProgressDialog() != null && (send.getmProgressDialog().isShowing())) {
+            send.getmProgressDialog().cancel();
         }
         super.onDestroy();
     }

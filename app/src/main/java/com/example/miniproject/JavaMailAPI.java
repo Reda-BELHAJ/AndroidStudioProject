@@ -30,6 +30,10 @@ public class JavaMailAPI extends AsyncTask<Void,Void,Void>  {
 
     private ProgressDialog mProgressDialog;
 
+    public ProgressDialog getmProgressDialog() {
+        return mProgressDialog;
+    }
+
     //Constructor
     public JavaMailAPI(Context mContext, String mEmail, String mSubject, String mMessage) {
         this.mContext = mContext;
@@ -38,7 +42,11 @@ public class JavaMailAPI extends AsyncTask<Void,Void,Void>  {
         this.mMessage = mMessage;
     }
 
-    private void dismissProgressDialog() {
+    public void dismissOn(){
+        mProgressDialog.dismiss();
+    }
+
+    public void dismissProgressDialog() {
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
             mProgressDialog.dismiss();
         }
@@ -58,7 +66,7 @@ public class JavaMailAPI extends AsyncTask<Void,Void,Void>  {
         }
 
         mProgressDialog.show();
-        mProgressDialog.dismiss();
+//        mProgressDialog.dismiss();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
