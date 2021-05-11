@@ -14,24 +14,24 @@
         android:orientation="vertical"
         android:padding="20dp">
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/backarrow"
+            android:src="@drawable/backarrow_icon"
+            android:padding="5dp"
+            android:clickable="true"
+            android:focusable="true"/>
+
         <TextView
             android:id="@+id/hello_message"
             android:layout_width="wrap_content"
             android:layout_height="77dp"
-            android:layout_marginTop="65dp"
+            android:layout_marginTop="30dp"
             android:fontFamily="@font/bungee"
-            android:text="WELCOME,"
+            android:text="Create mission"
             android:textColor="@color/black"
-            android:textSize="40sp" />
-
-        <TextView
-            android:id="@+id/small_message"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/alegreya_bold"
-            android:text="Sign up to start"
-            android:textColor="#7C7373"
-            android:textSize="18sp" />
+            android:textSize="38sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -41,116 +41,122 @@
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/email"
+                android:id="@+id/layoutmission"
                 style="@style/LoginTextInputLayoutStyle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:startIconDrawable="@drawable/email_icom"
-                app:startIconTint="@color/black">
+                android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/nomMission"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Email"
+                    android:hint="Mission Name"
                     android:maxLines="1"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/fullname"
-                style="@style/LoginTextInputLayoutStyle"
+                android:id="@+id/layouttype"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:startIconDrawable="@drawable/person_add"
-                app:startIconTint="@color/black">
+                android:hint="Type">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <AutoCompleteTextView
+                    android:id="@+id/type"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Full Name"
+                    android:inputType="none"
                     android:maxLines="1"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/username"
+                android:id="@+id/layoutdes"
                 style="@style/LoginTextInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:counterEnabled="true"
-                app:counterMaxLength="12"
-                app:startIconDrawable="@drawable/user_icon_round"
-                app:startIconTint="@color/black">
+                android:hint="Description">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Username"
-                    android:maxLines="1"/>
+                    android:inputType="textMultiLine"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/password"
+                android:id="@+id/layoutstart"
                 style="@style/LoginTextInputLayoutStyle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:passwordToggleEnabled="true"
-                app:startIconDrawable="@drawable/lock_icon"
-                app:startIconTint="@color/black">
+                android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
-
+                    android:id="@+id/debut"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Password"
-                    android:inputType="textPassword"
-                    android:maxLines="1"/>
+                    android:hint="Starting Date"
+                    android:inputType="none"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutfininsh"
+                style="@style/LoginTextInputLayoutStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/fin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Finishing Date"
+                    android:inputType="none"/>
 
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/confirm_password"
+                android:id="@+id/layouttypeTransport"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Transport">
+
+            <AutoCompleteTextView
+                android:id="@+id/typeTransport"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:maxLines="1"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutAdresse"
                 style="@style/LoginTextInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:passwordToggleEnabled="true"
-                app:startIconDrawable="@drawable/lock_icon"
-                app:startIconTint="@color/black">
+                android:hint="Address">
 
                 <com.google.android.material.textfield.TextInputEditText
-
+                    android:id="@+id/adresse"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Confirm Password"
-                    android:inputType="textPassword"
-                    android:maxLines="1"/>
-
+                    android:inputType="textMultiLine"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/sign_up"
+                android:id="@+id/create"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:background="#272B2B"
                 android:fontFamily="@font/baloo"
-                android:text="Sign Up"
+                android:text="Create"
                 android:textColor="@color/white" />
 
-            <Button
-                android:id="@+id/login_request"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                android:background="#00000000"
-                android:elevation="0dp"
-                android:fontFamily="@font/baloo"
-                android:text="Already have an account? Login"
-                android:textColor="#7C7373" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/icon_mini_projet"
         android:supportsRtl="true"
         android:theme="@style/Theme.MiniProject">
-        <activity android:name=".MissionActivity"></activity>
+        <activity android:name=".AccountActivity"></activity>
+        <activity android:name=".MissionForm" />
+        <activity android:name=".MissionActivity" />
         <activity android:name=".SignUpActivity2" />
         <activity android:name=".Forget3Activity" />
         <activity android:name=".Forget2Activity" />

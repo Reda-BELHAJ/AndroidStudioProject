@@ -70,14 +70,13 @@ public class MainActivity extends AppCompatActivity {
 
             if (checkNotEmpty(usernameText, passwordText)) {
                 if (checkDB(usernameText, passwordText) && checkEtat(usernameText)) {
-                    if(checkRole( usernameText).equals("Professeur")) {
+//                    if(checkRole( usernameText).equals("Professeur")) {
                         Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                         intent.putExtra("USER_NAME", usernameText);
                         intent.putExtra("ROLE", checkRole( usernameText));
                         MainActivity.this.startActivity(intent);
                         overridePendingTransition(R.anim.slide_right, R.anim.slide_out_left);
                         finish();
-                    }
                 } else {
                     username.setError("The Password or the Username is Incorrect");
                     password.setError("The Password or the Username is Incorrect");

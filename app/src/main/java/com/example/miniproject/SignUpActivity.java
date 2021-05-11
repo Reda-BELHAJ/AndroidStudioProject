@@ -185,7 +185,7 @@ public class SignUpActivity extends AppCompatActivity {
             user.setUserName(username.getEditText().getText().toString());
             user.setPassword(password.getEditText().getText().toString());
             user.setRole("Professeur");
-            user.setEtat(true);
+            user.setEtat(false);
 
         }, () -> {
 //            Toast.makeText(SignUpActivity.this, "Success", Toast.LENGTH_SHORT).show();

@@ -47,7 +47,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="71dp"
                     android:fontFamily="@font/bungee"
-                    android:text="Missions"
+                    android:text="Accounts"
                     android:textColor="@color/black"
                     android:textSize="40sp" />
 
@@ -66,7 +66,7 @@
                         android:layout_marginLeft="8dp"
                         android:fontFamily="@font/bungee"
                         android:padding="10dp"
-                        android:text="Create a mission"
+                        android:text="Create a Account"
                         android:textColor="@color/white"
                         android:textSize="30dp" />
 

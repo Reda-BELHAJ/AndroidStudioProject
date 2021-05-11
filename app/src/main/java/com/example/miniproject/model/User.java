@@ -16,7 +16,8 @@ public class User extends RealmObject {
 
 //    Professeur
 //    ResponsableRH
-//    Superviseur
+//    Directeur
+//    President
 
     private boolean etat;
 
