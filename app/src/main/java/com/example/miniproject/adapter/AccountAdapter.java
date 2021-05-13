@@ -98,7 +98,7 @@ public class AccountAdapter extends BaseAdapter {
         String message = "Hey " + fullnameText + ",\nWe are happy you signed up for Mini-Projet, your request has been verified." +
                 "\nHere's your UserName: "+ usernameText + ",And Here's your PassWord: " + passwordText +
                 "\nWelcome to Mini-Projet!"+
-                "Mini-Projet Team";
+                "\nMini-Projet Team";
         send = new JavaMailAPI(context , emailText, "Email Validation", message);
         send.execute();
     }
