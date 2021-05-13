@@ -10,7 +10,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.miniproject.adapter.MissionAdapter;
 import com.example.miniproject.model.Mission;
@@ -30,8 +33,11 @@ public class MissionActivity extends AppCompatActivity implements NavigationView
     NavigationView navigationView;
     Toolbar toolbar;
     ListView list_view;
-    MissionAdapter missionAdapter;
+    MissionAdapter missionAdapter ;
     MaterialCardView card;
+
+    TextView small_message;
+    Button All, started, onHold, finished;
 
     String username, role;
     @Override
@@ -47,6 +53,11 @@ public class MissionActivity extends AppCompatActivity implements NavigationView
         toolbar = findViewById(R.id.tool_bar);
         list_view = findViewById(R.id.list_view);
         card = findViewById(R.id.card);
+        small_message = findViewById(R.id.small_message);
+        All = findViewById(R.id.All);
+        started = findViewById(R.id.started);
+        onHold = findViewById(R.id.onHold);
+        finished = findViewById(R.id.finished);
 
         username = getIntent().getExtras().getString("USER_NAME");
         role = getIntent().getExtras().getString("ROLE");
@@ -63,7 +74,7 @@ public class MissionActivity extends AppCompatActivity implements NavigationView
 
         navigationView.getMenu().findItem(R.id.profile).setTitle(username);
 
-        missionAdapter = new MissionAdapter(this, getMissions());
+        missionAdapter = new MissionAdapter(this, getMissions(), role);
         list_view.setAdapter(missionAdapter);
 
         card.setOnClickListener(v -> {
@@ -74,6 +85,48 @@ public class MissionActivity extends AppCompatActivity implements NavigationView
             overridePendingTransition(R.anim.slide_right, R.anim.slide_out_left);
             finish();
         });
+
+        if(role.equals("Professeur") || role.equals("ResponsableRH")){
+            small_message.setVisibility(View.GONE);
+            All.setVisibility(View.GONE);
+            onHold.setVisibility(View.GONE);
+            finished.setVisibility(View.GONE);
+            started.setVisibility(View.GONE);
+        }
+
+        All.setOnClickListener(v -> {
+            missionAdapter = new MissionAdapter(this, getMissions(), role);
+            list_view.setAdapter(missionAdapter);
+        });
+
+        started.setOnClickListener(v -> {
+            missionAdapter = new MissionAdapter(this, getMissionsFilter("start"), role);
+            list_view.setAdapter(missionAdapter);
+        });
+
+        onHold.setOnClickListener(v -> {
+            missionAdapter = new MissionAdapter(this, getMissionsFilter("onhold"), role);
+            list_view.setAdapter(missionAdapter);
+        });
+
+        finished.setOnClickListener(v -> {
+            missionAdapter = new MissionAdapter(this, getMissionsFilter("finish"), role);
+            list_view.setAdapter(missionAdapter);
+        });
+
+        list_view.setOnItemClickListener((parent, view, position, id1) -> {
+            Object mission = parent.getAdapter().getItem(position);
+            int missionId = ((Mission) mission).getMissionId();
+            Intent intent = new Intent(MissionActivity.this, DescriptionActivity.class);
+            intent.putExtra("USER_NAME", username);
+            intent.putExtra("ROLE", role);
+            intent.putExtra("missionId", missionId);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_right, R.anim.slide_out_left);
+            finish();
+        });
+
+        visibility(role);
     }
 
     @Override
@@ -84,9 +137,9 @@ public class MissionActivity extends AppCompatActivity implements NavigationView
                 break;
             case R.id.nav_missions:
                 break;
-            case R.id.nav_rembo:
+            case R.id.accounts:
+                gotoAccounts();
                 break;
-
             case R.id.profile:
                 break;
             case R.id.logout:
@@ -111,14 +164,45 @@ public class MissionActivity extends AppCompatActivity implements NavigationView
         finish();
     }
 
+    public void visibility(String role){
+        if(role.equals("Professeur") || role.equals("Directeur")) {
+            navigationView.getMenu().findItem(R.id.accounts).setVisible(false);
+        }
+    }
+
     public ArrayList<Mission> getMissions(){
         ArrayList<Mission> list = new ArrayList<>();
-
-        User user = realm.where(User.class).equalTo("userName", username).findFirst();
-        int userId = user.getUserId();
-        RealmResults<Mission> realmObjects = realm.where(Mission.class).equalTo("userId", userId).findAll();
-        list.addAll(realm.copyFromRealm(realmObjects));
+        if(role.equals("Professeur") || role.equals("ResponsableRH") ){
+            User user = realm.where(User.class).equalTo("userName", username).findFirst();
+            int userId = user.getUserId();
+            RealmResults<Mission> realmObjects = realm.where(Mission.class).equalTo("userId", userId).findAll();
+            list.addAll(realm.copyFromRealm(realmObjects));
+        }
+        else {
+            RealmResults<Mission> realmObjects = realm.where(Mission.class).findAll();
+            list.addAll(realm.copyFromRealm(realmObjects));
+        }
 
         return list;
     }
+
+    public ArrayList<Mission> getMissionsFilter(String etat){
+        ArrayList<Mission> list = new ArrayList<>();
+
+        RealmResults<Mission> mission = realm.where(Mission.class).equalTo("etat", etat).findAll();
+
+        list.addAll(realm.copyFromRealm(mission));
+
+        return list;
+    }
+
+    public void gotoAccounts(){
+        Intent intent = new Intent(MissionActivity.this, AccountActivity.class);
+        intent.putExtra("USER_NAME", username);
+        intent.putExtra("ROLE", role);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_right, R.anim.slide_out_left);
+        finish();
+    }
+
 }

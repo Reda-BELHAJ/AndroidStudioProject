@@ -2,14 +2,12 @@
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card1"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="wrap_content"
     android:layout_marginTop="20dp"
-    android:clickable="true"
     android:clipToPadding="true"
-    app:cardBackgroundColor="#778f65">
+    app:cardBackgroundColor="@color/black">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -36,17 +34,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Title goes here"
+                    android:textColor="@color/white"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/type"
-                    android:layout_width="wrap_content"
+                    android:layout_width="246dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:ellipsize="end"
                     android:maxLines="1"
+                    android:textColor="@color/white"
                     android:text="Secondary message card layouts can vary to support the types of content they contain. The following elements are commonly found among that variety." />
             </LinearLayout>
+
         </LinearLayout>
 
         <TextView
@@ -55,7 +56,47 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:maxLines="2"
+            android:textColor="@color/white"
             android:text="Lorem ipsum dolor sit amet, nec no nominavi scaevola. Pu." />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp">
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/validateBtn"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Validate"
+                android:textColor="@color/white"
+                app:backgroundTint="#778f65"
+                android:layout_margin="5dp"
+                android:textSize="12dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/deleteBtn"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Delete"
+                android:textColor="@color/white"
+                app:backgroundTint="#ad0312"
+                android:layout_margin="5dp"
+                android:textSize="12dp"/>
+
+            <TextView
+                android:id="@+id/etat"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom"
+                android:layout_margin="16dp"
+                android:layout_weight="1"
+                android:text="In process "
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="18dp"/>
+        </LinearLayout>
 
     </LinearLayout>
 

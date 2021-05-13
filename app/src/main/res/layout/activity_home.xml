@@ -52,7 +52,7 @@
                     android:fontFamily="@font/bungee"
                     android:text="HELLO THERE!"
                     android:textColor="@color/black"
-                    android:textSize="40sp" />
+                    android:textSize="36sp" />
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/card"
@@ -60,10 +60,9 @@
                     android:layout_height="170dp"
                     android:layout_marginTop="20dp"
                     android:clipToPadding="true"
-                    android:clickable="true"
                     app:cardBackgroundColor="#05210e"
                     app:cardElevation="2dp"
-                    app:cardCornerRadius="24dp">
+                    app:cardCornerRadius="12dp">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -94,6 +93,300 @@
                     </RelativeLayout>
 
                 </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/small_message2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="34dp"
+                    android:fontFamily="@font/bungee"
+                    android:text="Total Accounts:"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#7C7373"
+                    android:textSize="20dp" />
+
+                <LinearLayout
+                    android:id="@+id/accountslayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.card.MaterialCardView
+                        app:strokeColor="@color/black"
+                        app:strokeWidth="@dimen/cardview_compat_inset_shadow"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="100dp"
+                        android:layout_marginRight="10dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+
+                            <TextView
+                                android:id="@+id/textView3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginLeft="12dp"
+                                android:layout_marginTop="12dp"
+                                android:text="Total Accounts"
+                                android:textSize="11dp"
+                                android:textColor="@color/black"
+                                android:fontFamily="@font/bungee"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/countAll"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="5"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+                            <TextView
+                                android:id="@+id/textView10"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="Accounts"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/countAll"
+                                tools:ignore="MissingConstraints" />
+
+                            <ImageView
+                                android:id="@+id/imageView"
+                                android:layout_width="78dp"
+                                android:layout_height="27dp"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginLeft="12dp"
+                                android:layout_marginTop="60dp"
+                                app:layout_constraintStart_toEndOf="@+id/textView10"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:srcCompat="@drawable/mainline" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        app:strokeColor="@color/black"
+                        app:strokeWidth="@dimen/cardview_compat_inset_shadow"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="100dp"
+                        android:layout_marginLeft="10dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/textView4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginLeft="12dp"
+                                android:layout_marginTop="12dp"
+                                android:text="Invalidate Accounts"
+                                android:textSize="11dp"
+                                android:textColor="@color/black"
+                                android:fontFamily="@font/bungee"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/countInv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="4"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+                            <TextView
+                                android:id="@+id/textView5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="Accounts"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/countInv"
+                                tools:ignore="MissingConstraints" />
+
+                            <ImageView
+                                android:id="@+id/imageView2"
+                                android:layout_width="78dp"
+                                android:layout_height="27dp"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginLeft="12dp"
+                                android:layout_marginTop="60dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toEndOf="@+id/textView5"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:srcCompat="@drawable/mainline" />
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/small_message3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="34dp"
+                    android:fontFamily="@font/bungee"
+                    android:text="Total Missions:"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#7C7373"
+                    android:textSize="20dp" />
+
+                <LinearLayout
+                    android:id="@+id/missionlayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.card.MaterialCardView
+                        app:strokeColor="@color/black"
+                        app:strokeWidth="@dimen/cardview_compat_inset_shadow"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="100dp"
+                        android:layout_marginRight="10dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+
+                            <TextView
+                                android:id="@+id/text3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginLeft="12dp"
+                                android:layout_marginTop="12dp"
+                                android:text="Total Missions"
+                                android:textSize="11dp"
+                                android:textColor="@color/black"
+                                android:fontFamily="@font/bungee"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/countAll1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="5"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/text3" />
+
+                            <TextView
+                                android:id="@+id/text10"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="Missions"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/countAll1"
+                                tools:ignore="MissingConstraints" />
+
+                            <ImageView
+                                android:layout_width="78dp"
+                                android:layout_height="27dp"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginLeft="12dp"
+                                android:layout_marginTop="60dp"
+                                app:layout_constraintStart_toEndOf="@+id/text10"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:srcCompat="@drawable/mainline" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        app:strokeColor="@color/black"
+                        app:strokeWidth="@dimen/cardview_compat_inset_shadow"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="100dp"
+                        android:layout_marginLeft="10dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/text4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginLeft="12dp"
+                                android:layout_marginTop="12dp"
+                                android:text="Finished Missions"
+                                android:textSize="11dp"
+                                android:textColor="@color/black"
+                                android:fontFamily="@font/bungee"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/countInv1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="4"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/text4" />
+
+                            <TextView
+                                android:id="@+id/text5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="Missions"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/countInv1"
+                                tools:ignore="MissingConstraints" />
+
+                            <ImageView
+                                android:layout_width="78dp"
+                                android:layout_height="27dp"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginLeft="12dp"
+                                android:layout_marginTop="60dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toEndOf="@+id/text5"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:srcCompat="@drawable/mainline" />
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/small_message"
@@ -143,42 +436,6 @@
 
                 </com.google.android.material.card.MaterialCardView>
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card2"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:layout_marginTop="20dp"
-                    android:clipToPadding="true"
-                    android:clickable="true"
-                    app:cardBackgroundColor="#400a1f"
-                    app:cardElevation="2dp"
-                    app:cardCornerRadius="12dp">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="70dp"
-                            android:fontFamily="@font/bungee"
-                            android:layout_marginLeft="8dp"
-                            android:padding="10dp"
-                            android:text="Refunds"
-                            android:textColor="@color/white"
-                            android:textSize="30dp"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/bungee"
-                            android:layout_marginLeft="8dp"
-                            android:padding="10dp"
-                            android:text="Tap"
-                            android:textColor="@color/white"
-                            android:textSize="12dp"/>
-                    </RelativeLayout>
-
-                </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/card3"

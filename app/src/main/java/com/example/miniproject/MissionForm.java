@@ -73,7 +73,7 @@ public class MissionForm extends AppCompatActivity {
         debut.setInputType(InputType.TYPE_NULL);
 
         adapter = new ArrayAdapter<String>(this, R.layout.list_type, R.id.textview, TYPE);
-        adapter2 = new ArrayAdapter<String>(this, R.layout.list_type, R.id.textview, TYPE);
+        adapter2 = new ArrayAdapter<String>(this, R.layout.list_type, R.id.textview, TYPE2);
 
         username = getIntent().getExtras().getString("USER_NAME");
         role = getIntent().getExtras().getString("ROLE");
@@ -99,8 +99,15 @@ public class MissionForm extends AppCompatActivity {
 
         int useId = getId(username);
         create.setOnClickListener(v -> {
-            if (checkNotEmpty( fin,  debut, description, nomMission))
-                addUser(useId);
+            if (checkNotEmpty( fin,  debut, description, nomMission)) {
+                addMission(useId);
+                Intent intent = new Intent(MissionForm.this, MissionActivity.class);
+                intent.putExtra("USER_NAME", username);
+                intent.putExtra("ROLE", role);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_right, R.anim.slide_out_left);
+                finish();
+            }
         });
     }
 
@@ -130,7 +137,7 @@ public class MissionForm extends AppCompatActivity {
         return realmObjects.getUserId();
     }
 
-    public void addUser(int userId){
+    public void addMission(int userId){
         realm.executeTransactionAsync(bgRealm -> {
             Number maxId = bgRealm.where(Mission.class).max("missionId");
 
@@ -142,13 +149,23 @@ public class MissionForm extends AppCompatActivity {
             mission.setDescription(description.getText().toString());
             mission.setAdresse(adresse.getText().toString());
             mission.setTypeTransport(typeTransport.getText().toString());
+
             try {
                 mission.setDebutMission(new SimpleDateFormat("dd/MM/yyyy").parse(debut.getText().toString()));
                 mission.setFinMission(new SimpleDateFormat("dd/MM/yyyy").parse(fin.getText().toString()));
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            mission.setEtat("start");
+
+            if(role.equals("Directeur")) {
+                mission.setEtat("onhold");
+            }
+            else if(role.equals("President")){
+                mission.setEtat("finish");
+            }
+            else{
+                mission.setEtat("start");
+            }
 
         }, () -> {
             System.out.println("Success");
@@ -170,11 +187,19 @@ public class MissionForm extends AppCompatActivity {
             state = false;
         }
         if(debut.getText().toString().isEmpty()){
-            layoutstart.setError("Date is Empty!");
+            layoutstart.setError("Starting Date is Empty!");
             state = false;
         }
         if(fin.getText().toString().isEmpty()){
-            layoutfininsh.setError("Date is Empty!");
+            layoutfininsh.setError("Finishing Date is Empty!");
+            state = false;
+        }
+        if(typeTransport.getText().toString().isEmpty()){
+            layouttypeTransport.setError("Transport is Empty!");
+            state = false;
+        }
+        if(adresse.getText().toString().isEmpty()){
+            layoutAdresse.setError("Address is Empty!");
             state = false;
         }
         return state;

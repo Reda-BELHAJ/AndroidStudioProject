@@ -87,7 +87,7 @@ public class SignUpActivity extends AppCompatActivity {
                     && checkPasswords(passwordText, con_passwordText)) {
 
                 addUser();
-                sendEmail(emailText, fullnameText, usernameText, passwordText);
+//                sendEmail(emailText, fullnameText, usernameText, passwordText);
 
                 Intent intent = new Intent(SignUpActivity.this, SignUpActivity2.class);
                 SignUpActivity.this.startActivity(intent);
@@ -188,22 +188,11 @@ public class SignUpActivity extends AppCompatActivity {
             user.setEtat(false);
 
         }, () -> {
-//            Toast.makeText(SignUpActivity.this, "Success", Toast.LENGTH_SHORT).show();
             System.out.println("Success");
 
         }, error -> {
-//            Toast.makeText(SignUpActivity.this, "Error", Toast.LENGTH_SHORT).show();
             error.printStackTrace();
         });
-    }
-
-    public void sendEmail(String emailText ,String fullnameText,String usernameText,String passwordText){
-        String message = "Hey " + fullnameText + ",\nWe are happy you signed up for Mini-Projet, your request has been verified." +
-                "\nHere's your UserName: "+ usernameText + ",And Here's your PassWord: " + passwordText +
-                "\nWelcome to Mini-Projet!"+
-                "Mini-Projet Team";
-        send = new JavaMailAPI(this , emailText, "Email Validation", message);
-        send.execute();
     }
 
     @Override

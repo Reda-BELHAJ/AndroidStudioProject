@@ -3,6 +3,7 @@
     package="com.example.miniproject">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".RealmApp"
@@ -12,7 +13,8 @@
         android:roundIcon="@mipmap/icon_mini_projet"
         android:supportsRtl="true"
         android:theme="@style/Theme.MiniProject">
-        <activity android:name=".AccountActivity"></activity>
+        <activity android:name=".DescriptionActivity"></activity>
+        <activity android:name=".AccountActivity" />
         <activity android:name=".MissionForm" />
         <activity android:name=".MissionActivity" />
         <activity android:name=".SignUpActivity2" />

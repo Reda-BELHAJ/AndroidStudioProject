@@ -12,11 +12,6 @@
             android:title="Missions" />
 
         <item
-            android:id="@+id/nav_rembo"
-            android:icon="@drawable/money_icom"
-            android:title="Refunds" />
-
-        <item
             android:id="@+id/accounts"
             android:icon="@drawable/people_icon"
             android:title="Accounts" />

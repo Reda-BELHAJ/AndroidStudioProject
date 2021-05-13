@@ -51,26 +51,45 @@
                     android:textColor="@color/black"
                     android:textSize="40sp" />
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card"
+                <TextView
+                    android:id="@+id/small_message"
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:layout_marginTop="20dp"
-                    android:clickable="true"
-                    android:clipToPadding="true"
-                    app:cardBackgroundColor="@color/black">
+                    android:layout_height="27dp"
+                    android:fontFamily="@font/bungee"
+                    android:text="Filter By"
+                    android:textColor="@color/black"
+                    android:textSize="15dp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="70dp"
-                        android:layout_marginLeft="8dp"
-                        android:fontFamily="@font/bungee"
-                        android:padding="10dp"
-                        android:text="Create a Account"
-                        android:textColor="@color/white"
-                        android:textSize="30dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-                </com.google.android.material.card.MaterialCardView>
+                    <Button
+                        android:id="@+id/All"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="All" />
+
+                    <Button
+                        android:id="@+id/Notvalidate"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Not Validate" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0 Not Validate Account!"
+                    android:fontFamily="@font/bungee"
+                    android:textSize="12dp"/>
 
                 <View
                     android:layout_width="match_parent"
@@ -81,18 +100,15 @@
 
         </LinearLayout>
 
-        <ScrollView
+
+        <ListView
+            android:id="@+id/list_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:dividerHeight="10.0sp"
+            android:clickable="true"
+            android:padding="20dp" />
 
-            <ListView
-                android:id="@+id/list_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="20dp">
-            </ListView>
-
-        </ScrollView>
 
     </LinearLayout>
 

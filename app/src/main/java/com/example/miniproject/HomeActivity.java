@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,24 +14,33 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.miniproject.model.Mission;
+import com.example.miniproject.model.User;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.navigation.NavigationView;
+
+import io.realm.Realm;
+import io.realm.RealmResults;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
-    TextView message_welcome;
-    MaterialCardView card1, card2, card3;
+    TextView message_welcome, small_message2, small_message3, countAll, countInv, countAll1, countInv1;
+    MaterialCardView card1, card3;
+    LinearLayout accountslayout, missionlayout;
 
     String username, role;
+
+    Realm realm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_home);
+        realm = Realm.getDefaultInstance();
 
         int id = R.id.nav_home;
 
@@ -42,22 +52,25 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         toolbar = findViewById(R.id.tool_bar);
         message_welcome = findViewById(R.id.message_welcome);
         card1 = findViewById(R.id.card1);
-        card2 = findViewById(R.id.card2);
         card3 = findViewById(R.id.card3);
+        accountslayout = findViewById(R.id.accountslayout);
+        missionlayout = findViewById(R.id.missionlayout);
+        small_message2 = findViewById(R.id.small_message2);
+        small_message3 = findViewById(R.id.small_message3);
+
+        countAll = findViewById(R.id.countAll);
+        countInv = findViewById(R.id.countInv);
+
+        countAll1 = findViewById(R.id.countAll1);
+        countInv1 = findViewById(R.id.countInv1);
 
         card1.setOnClickListener(v -> {
             gotoMissions();
         });
 
-        card2.setOnClickListener(v -> {
-
-        });
-
         card3.setOnClickListener(v -> {
-
+            gotoAccounts();
         });
-
-//        card1.setVisibility(View.GONE);
 
         message_welcome.setText("HELLO " + username.toUpperCase() +"!");
 
@@ -72,7 +85,34 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setCheckedItem(id);
 
         navigationView.getMenu().findItem(R.id.profile).setTitle(username);
-//        navigationView.getMenu().findItem(R.id.profile).setVisible(false);
+
+        visibility(role);
+
+        countAll.setText(getCount());
+        countInv.setText(getInvCount());
+
+        countAll1.setText(getCountM());
+        countInv1.setText(getInvCountM());
+    }
+
+    public String getCount(){
+        long  missions = realm.where(User.class).count();
+        return "" + missions;
+    }
+
+    public String getInvCount(){
+        long  missions = realm.where(User.class).equalTo("etat", false).count();
+        return "" + missions;
+    }
+
+    public String getCountM(){
+        long  users = realm.where(Mission.class).count();
+        return "" + users;
+    }
+
+    public String getInvCountM(){
+        long  users = realm.where(Mission.class).equalTo("etat", "finish").count();
+        return "" + users;
     }
 
     @Override
@@ -92,7 +132,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_missions:
                 gotoMissions();
                 break;
-            case R.id.nav_rembo:
+            case R.id.accounts:
+                gotoAccounts();
                 break;
             case R.id.profile:
                 break;
@@ -110,19 +151,31 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void visibility(String role){
-        if(role == "Professeur"){
+        if(role.equals("Professeur") || role.equals("Directeur")){
             navigationView.getMenu().findItem(R.id.accounts).setVisible(false);
             card3.setVisibility(View.GONE);
-
-        }else if(role == "ResponsableRH"){
-
-        }else if(role == "Superviseur"){
-
+        }
+        if(!(role.equals("ResponsableRH") || role.equals("President"))){
+            accountslayout.setVisibility(View.GONE);
+            small_message2.setVisibility(View.GONE);
+        }
+        if(!(role.equals("Directeur") || role.equals("President") )){
+            missionlayout.setVisibility(View.GONE);
+            small_message3.setVisibility(View.GONE);
         }
     }
 
     public void gotoMissions(){
         Intent intent = new Intent(HomeActivity.this, MissionActivity.class);
+        intent.putExtra("USER_NAME", username);
+        intent.putExtra("ROLE", role);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_right, R.anim.slide_out_left);
+        finish();
+    }
+
+    public void gotoAccounts(){
+        Intent intent = new Intent(HomeActivity.this, AccountActivity.class);
         intent.putExtra("USER_NAME", username);
         intent.putExtra("ROLE", role);
         startActivity(intent);

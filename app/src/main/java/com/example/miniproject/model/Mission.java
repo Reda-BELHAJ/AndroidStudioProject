@@ -15,9 +15,9 @@ public class Mission extends RealmObject {
     private Date debutMission;
     private Date finMission;
     private String etat;
-    // start
-    // onhold
-    // finish
+    // start : In process
+    // onhold : On hold
+    // finish : Successful
     private String description;
 
     private String adresse;
