@@ -27,9 +27,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
-    TextView message_welcome, small_message2, small_message3, countAll, countInv, countAll1, countInv1;
+    TextView message_welcome, small_message2, small_message3, countAll, countInv, countAll1, countInv1, countAll2, countInv2;
     MaterialCardView card1, card3;
-    LinearLayout accountslayout, missionlayout;
+    LinearLayout accountslayout, missionlayout, missionlayout2;
 
     String username, role;
 
@@ -55,6 +55,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         card3 = findViewById(R.id.card3);
         accountslayout = findViewById(R.id.accountslayout);
         missionlayout = findViewById(R.id.missionlayout);
+        missionlayout2 = findViewById(R.id.missionlayout2);
         small_message2 = findViewById(R.id.small_message2);
         small_message3 = findViewById(R.id.small_message3);
 
@@ -63,6 +64,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         countAll1 = findViewById(R.id.countAll1);
         countInv1 = findViewById(R.id.countInv1);
+
+        countAll2 = findViewById(R.id.countAll2);
+        countInv2 = findViewById(R.id.countInv2);
 
         card1.setOnClickListener(v -> {
             gotoMissions();
@@ -92,7 +96,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         countInv.setText(getInvCount());
 
         countAll1.setText(getCountM());
-        countInv1.setText(getInvCountM());
+        countInv1.setText(getInvCountM("finish"));
+
+        countAll2.setText(getInvCountM("start"));
+        countInv2.setText(getInvCountM("onhold"));
     }
 
     public String getCount(){
@@ -110,8 +117,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         return "" + users;
     }
 
-    public String getInvCountM(){
-        long  users = realm.where(Mission.class).equalTo("etat", "finish").count();
+    public String getInvCountM(String etat){
+        long  users = realm.where(Mission.class).equalTo("etat", etat).count();
         return "" + users;
     }
 
@@ -161,6 +168,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         }
         if(!(role.equals("Directeur") || role.equals("President") )){
             missionlayout.setVisibility(View.GONE);
+            missionlayout2.setVisibility(View.GONE);
             small_message3.setVisibility(View.GONE);
         }
     }

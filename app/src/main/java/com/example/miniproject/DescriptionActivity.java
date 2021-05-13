@@ -120,7 +120,7 @@ public class DescriptionActivity extends AppCompatActivity {
 
     public void createPdf(String NameMission, String type, String address, String transport, String finish, String start) throws FileNotFoundException {
         String pdfPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString();
-        File file = new File(pdfPath, "myMission.pdf"+NameMission);
+        File file = new File(pdfPath, "myMission"+NameMission+".pdf");
         OutputStream outputStream = new FileOutputStream(file);
 
         PdfWriter pdfWriter = new PdfWriter(file);

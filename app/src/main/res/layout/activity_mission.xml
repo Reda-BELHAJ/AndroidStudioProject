@@ -67,6 +67,7 @@
                         android:fontFamily="@font/bungee"
                         android:padding="10dp"
                         android:text="Create a mission"
+                        app:autoSizeTextType="uniform"
                         android:textColor="@color/white"
                         android:textSize="30dp" />
 
@@ -102,8 +103,9 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="started"
+
                         android:textStyle="bold"
-                        android:textSize="11dp"/>
+                        android:textSize="10dp"/>
 
                     <Button
                         android:id="@+id/onHold"
@@ -113,7 +115,7 @@
                         android:layout_weight="1"
                         android:text="On hold"
                         android:textStyle="bold"
-                        android:textSize="11dp"/>
+                        android:textSize="10dp"/>
 
                     <Button
                         android:id="@+id/finished"
@@ -123,7 +125,7 @@
                         android:layout_weight="1"
                         android:text="finished"
                         android:textStyle="bold"
-                        android:textSize="11dp"/>
+                        android:textSize="10dp"/>
 
                 </LinearLayout>
 
