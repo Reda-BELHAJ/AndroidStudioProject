@@ -13,7 +13,6 @@
         android:background="#FCF9F9"
         android:orientation="vertical"
         android:padding="20dp">
-
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -27,11 +26,12 @@
             android:id="@+id/hello_message"
             android:layout_width="wrap_content"
             android:layout_height="77dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="70dp"
             android:fontFamily="@font/bungee"
-            android:text="Create mission"
+            android:text="Update"
             android:textColor="@color/black"
-            android:textSize="35sp" />
+            android:textSize="40sp" />
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -41,120 +41,102 @@
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/layoutmission"
+                android:id="@+id/email"
                 style="@style/LoginTextInputLayoutStyle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:startIconDrawable="@drawable/email_icom"
+                app:startIconTint="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/nomMission"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Mission Name"
+                    android:hint="Email"
                     android:maxLines="1"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/layouttype"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                android:id="@+id/fullname"
+                style="@style/LoginTextInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Type">
+                app:startIconDrawable="@drawable/person_add"
+                app:startIconTint="@color/black">
 
-                <AutoCompleteTextView
-                    android:id="@+id/type"
+                <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none"
+                    android:hint="Full Name"
                     android:maxLines="1"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/layoutdes"
+                android:id="@+id/username"
                 style="@style/LoginTextInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Description">
+                app:startIconDrawable="@drawable/user_icon_round"
+                app:startIconTint="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textMultiLine"/>
+                    android:hint="Username"
+                    android:maxLines="1"
+                    android:enabled="false"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/layoutstart"
+                android:id="@+id/password"
                 style="@style/LoginTextInputLayoutStyle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:passwordToggleEnabled="true"
+                app:startIconDrawable="@drawable/lock_icon"
+                app:startIconTint="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/debut"
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Starting Date"
-                    android:inputType="none"/>
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/layoutfininsh"
-                style="@style/LoginTextInputLayoutStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/fin"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Finishing Date"
-                    android:inputType="none"/>
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:maxLines="1"/>
 
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/layouttypeTransport"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Transport">
-
-            <AutoCompleteTextView
-                android:id="@+id/typeTransport"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="none"
-                android:maxLines="1"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/layoutAdresse"
+                android:id="@+id/confirm_password"
                 style="@style/LoginTextInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Address">
+                app:passwordToggleEnabled="true"
+                app:startIconDrawable="@drawable/lock_icon"
+                app:startIconTint="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/adresse"
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textMultiLine"/>
+                    android:hint="Confirm Password"
+                    android:inputType="textPassword"
+                    android:maxLines="1"/>
+
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/create"
+                android:id="@+id/update"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:background="#272B2B"
                 android:fontFamily="@font/baloo"
-                android:text="Create"
+                android:text="Update"
                 android:textColor="@color/white" />
 
         </LinearLayout>

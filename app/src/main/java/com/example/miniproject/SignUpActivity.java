@@ -37,8 +37,6 @@ public class SignUpActivity extends AppCompatActivity {
     TextInputLayout password;
     TextInputLayout confirm_password;
 
-    JavaMailAPI send;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -205,9 +203,6 @@ public class SignUpActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        if (send != null && send.getmProgressDialog() != null && (send.getmProgressDialog().isShowing())) {
-            send.getmProgressDialog().cancel();
-        }
         super.onDestroy();
     }
 }

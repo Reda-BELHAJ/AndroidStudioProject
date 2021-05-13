@@ -67,9 +67,8 @@
                         android:fontFamily="@font/bungee"
                         android:padding="10dp"
                         android:text="Create a mission"
-                        app:autoSizeTextType="uniform"
                         android:textColor="@color/white"
-                        android:textSize="30dp" />
+                        android:textSize="25dp" />
 
                 </com.google.android.material.card.MaterialCardView>
 

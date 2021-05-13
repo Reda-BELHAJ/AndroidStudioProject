@@ -1,5 +1,6 @@
 package com.example.miniproject;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -7,6 +8,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
@@ -118,9 +120,11 @@ public class DescriptionActivity extends AppCompatActivity {
         return realmObjects;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.R)
     public void createPdf(String NameMission, String type, String address, String transport, String finish, String start) throws FileNotFoundException {
-        String pdfPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString();
-        File file = new File(pdfPath, "myMission"+NameMission+".pdf");
+//        String pdfPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString();
+//        String pdfPath = Environment.getDataDirectory().toString();
+        File file = new File(getFilesDir(), "myMission"+NameMission+".pdf");
         OutputStream outputStream = new FileOutputStream(file);
 
         PdfWriter pdfWriter = new PdfWriter(file);
@@ -152,7 +156,7 @@ public class DescriptionActivity extends AppCompatActivity {
         // Row2
         table.addCell(new Cell().add(new Paragraph("Université Internationale\n"+
                 " de Rabat Technopolis \n"+
-                "Rabat-Shore Rocade Rabat-Salé")).setBorder(Border.NO_BORDER));
+                "Rabat-Shore Rocade Rabat-Salé.")).setBorder(Border.NO_BORDER));
         table.addCell(new Cell().add(new Paragraph("+212 (0)5 30 10 30 00\n"+
                 "contact@uir.ac.ma")).setBorder(Border.NO_BORDER));
         table.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));

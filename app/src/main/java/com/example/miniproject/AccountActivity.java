@@ -96,6 +96,7 @@ public class AccountActivity extends AppCompatActivity implements NavigationView
             case R.id.accounts:
                 break;
             case R.id.profile:
+                gotoPrfile();
                 break;
             case R.id.logout:
                 Intent intent = new Intent(AccountActivity.this, MainActivity.class);
@@ -145,5 +146,14 @@ public class AccountActivity extends AppCompatActivity implements NavigationView
         list.addAll(realm.copyFromRealm(users));
 
         return list;
+    }
+
+    public void gotoPrfile(){
+        Intent intent = new Intent(AccountActivity.this, UpdateActivity.class);
+        intent.putExtra("USER_NAME", username);
+        intent.putExtra("ROLE", role);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_right, R.anim.slide_out_left);
+        finish();
     }
 }

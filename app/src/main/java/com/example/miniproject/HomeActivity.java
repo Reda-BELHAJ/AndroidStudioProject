@@ -143,6 +143,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 gotoAccounts();
                 break;
             case R.id.profile:
+                gotoPrfile();
                 break;
             case R.id.logout:
                 Intent intent = new Intent(HomeActivity.this, MainActivity.class);
@@ -184,6 +185,15 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     public void gotoAccounts(){
         Intent intent = new Intent(HomeActivity.this, AccountActivity.class);
+        intent.putExtra("USER_NAME", username);
+        intent.putExtra("ROLE", role);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_right, R.anim.slide_out_left);
+        finish();
+    }
+
+    public void gotoPrfile(){
+        Intent intent = new Intent(HomeActivity.this, UpdateActivity.class);
         intent.putExtra("USER_NAME", username);
         intent.putExtra("ROLE", role);
         startActivity(intent);

@@ -141,6 +141,7 @@ public class MissionActivity extends AppCompatActivity implements NavigationView
                 gotoAccounts();
                 break;
             case R.id.profile:
+                gotoPrfile();
                 break;
             case R.id.logout:
                 Intent intent = new Intent(MissionActivity.this, MainActivity.class);
@@ -198,6 +199,15 @@ public class MissionActivity extends AppCompatActivity implements NavigationView
 
     public void gotoAccounts(){
         Intent intent = new Intent(MissionActivity.this, AccountActivity.class);
+        intent.putExtra("USER_NAME", username);
+        intent.putExtra("ROLE", role);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_right, R.anim.slide_out_left);
+        finish();
+    }
+
+    public void gotoPrfile(){
+        Intent intent = new Intent(MissionActivity.this, UpdateActivity.class);
         intent.putExtra("USER_NAME", username);
         intent.putExtra("ROLE", role);
         startActivity(intent);
