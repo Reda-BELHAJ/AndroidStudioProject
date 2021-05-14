@@ -53,6 +53,7 @@ public class DescriptionActivity extends AppCompatActivity {
 
     Button download;
 
+    @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

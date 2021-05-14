@@ -127,6 +127,7 @@ public class MissionActivity extends AppCompatActivity implements NavigationView
         });
 
         visibility(role);
+        missionAdapter.notifyDataSetChanged();
     }
 
     @Override

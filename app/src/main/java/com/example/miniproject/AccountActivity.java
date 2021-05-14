@@ -82,6 +82,9 @@ public class AccountActivity extends AppCompatActivity implements NavigationView
         Notvalidate.setOnClickListener(v -> list_view.setAdapter(accountAdapter1));
 
         count.setText(getUsersFilter().size() + " Not Validate Account!");
+
+        accountAdapter.notifyDataSetChanged();
+        accountAdapter1.notifyDataSetChanged();
     }
 
     @Override
