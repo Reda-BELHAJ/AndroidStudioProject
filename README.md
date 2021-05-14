@@ -8,8 +8,4 @@ API and libraries used:
 - JavaMail API
 - iText JAVA PDF library
 
-
-
-
-Test 
-
+Min Sdk Version: 26
