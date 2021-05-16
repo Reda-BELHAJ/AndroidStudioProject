@@ -93,12 +93,13 @@ public class MissionAdapter extends BaseAdapter {
                 validateBtn.setBackgroundColor(Color.parseColor("#418b8c"));
             } else if (role.equals("President")) {
                 updateMission(mission.getMissionId(), "finish");
-                sendEmail(getUser(mission.getMissionId()).getUserEmail(), getUser(mission.getMissionId()).getFullName(), mission.getMissionName());
+                sendEmail(getUser(mission.getMissionId()).getUserEmail(), getUser(mission.getMissionId()).getFullName(), mission.getMissionName(), "verified try to download your pdf.");
             }
         });
 
         deleteBtn.setOnClickListener(v -> {
             deleteMission(mission.getMissionId());
+            sendEmail(getUser(mission.getMissionId()).getUserEmail(), getUser(mission.getMissionId()).getFullName(), mission.getMissionName(), "deleted.");
         });
 
         return convertView;
@@ -134,9 +135,9 @@ public class MissionAdapter extends BaseAdapter {
         return user;
     }
 
-    public void sendEmail(String emailText ,String fullnameText,String missionName){
+    public void sendEmail(String emailText ,String fullnameText,String missionName, String wo){
         String message = "Hey " + fullnameText + ",\nWe are happy you signed up for Mini-Projet," +
-                "\nThe mission " + missionName + "has been verified try to download your pdf."+
+                "\nThe mission " + missionName + "has been " + wo +
                 "\nWelcome to Mini-Projet!"+
                 "\nMini-Projet Team";
         send = new JavaMailAPI(context , emailText, "Email Validation", message);
