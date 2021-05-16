@@ -3,6 +3,7 @@
     package="com.example.miniproject">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
@@ -13,7 +14,8 @@
         android:roundIcon="@mipmap/icon_mini_projet"
         android:supportsRtl="true"
         android:theme="@style/Theme.MiniProject">
-        <activity android:name=".UpdateActivity"></activity>
+        <activity android:name=".RandomForgetActivity"></activity>
+        <activity android:name=".UpdateActivity" />
         <activity android:name=".DescriptionActivity" />
         <activity android:name=".AccountActivity" />
         <activity android:name=".MissionForm" />

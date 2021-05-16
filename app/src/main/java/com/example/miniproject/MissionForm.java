@@ -112,7 +112,7 @@ public class MissionForm extends AppCompatActivity {
     }
 
     private static final String[] TYPE = new String[] {
-            "Type 1", "Type 2", "Type 3", "Type 4"
+            "Organization of the Forum", "Academic Orientation", "Conference", "Discovery Day" , "Academic support" , "Exchange of Practices", "Presentation"
     };
 
     private static final String[] TYPE2 = new String[] {

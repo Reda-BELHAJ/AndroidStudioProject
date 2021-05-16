@@ -28,7 +28,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     NavigationView navigationView;
     Toolbar toolbar;
     TextView message_welcome, small_message2, small_message3, countAll, countInv, countAll1, countInv1, countAll2, countInv2;
-    MaterialCardView card1, card3;
+    TextView title, type, description, etat;
+    MaterialCardView card1, card3, cardMission, notFound;
     LinearLayout accountslayout, missionlayout, missionlayout2;
 
     String username, role;
@@ -58,6 +59,15 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         missionlayout2 = findViewById(R.id.missionlayout2);
         small_message2 = findViewById(R.id.small_message2);
         small_message3 = findViewById(R.id.small_message3);
+        cardMission = findViewById(R.id.cardMission);
+        notFound = findViewById(R.id.notFound);
+
+        title = findViewById(R.id.title);
+        type = findViewById(R.id.type);
+        description = findViewById(R.id.description);
+        etat = findViewById(R.id.etat);
+
+        notFound.setVisibility(View.GONE);
 
         countAll = findViewById(R.id.countAll);
         countInv = findViewById(R.id.countInv);
@@ -67,6 +77,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         countAll2 = findViewById(R.id.countAll2);
         countInv2 = findViewById(R.id.countInv2);
+
+        getLatestMission();
 
         card1.setOnClickListener(v -> {
             gotoMissions();
@@ -100,6 +112,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         countAll2.setText(getInvCountM("start"));
         countInv2.setText(getInvCountM("onhold"));
+
     }
 
     public String getCount(){
@@ -199,5 +212,44 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         startActivity(intent);
         overridePendingTransition(R.anim.slide_right, R.anim.slide_out_left);
         finish();
+    }
+
+    public void getLatestMission(){
+        User user = realm.where(User.class).equalTo("userName", username).findFirst();
+        int userId = user.getUserId();
+        if(! realm.where(Mission.class).equalTo("userId", userId).findAll().isEmpty()) {
+            Mission realmObjects = realm.where(Mission.class).equalTo("userId", userId).findAll().last();
+
+            title.setText(realmObjects.getMissionName());
+            type.setText(realmObjects.getMissionType());
+            description.setText(realmObjects.getDescription());
+
+            cardMission.setOnClickListener(v -> {
+                int missionId = ((Mission) realmObjects).getMissionId();
+                Intent intent = new Intent(HomeActivity.this, DescriptionActivity.class);
+                intent.putExtra("USER_NAME", username);
+                intent.putExtra("ROLE", role);
+                intent.putExtra("missionId", missionId);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_right, R.anim.slide_out_left);
+                finish();
+            });
+
+            switch (realmObjects.getEtat()) {
+                case "start":
+                    etat.setText("In process");
+                    break;
+                case "onhold":
+                    etat.setText("On hold");
+                    break;
+                case "finish":
+                    etat.setText("Successful");
+                    break;
+            }
+
+        }else {
+            notFound.setVisibility(View.VISIBLE);
+            cardMission.setVisibility(View.GONE);
+        }
     }
 }

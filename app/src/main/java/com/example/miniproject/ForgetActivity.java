@@ -44,7 +44,7 @@ public class ForgetActivity extends AppCompatActivity {
             String emailText = email.getEditText().getText().toString();
 
             if(checkEmail(emailText) && checkEmailDB(emailText)){
-                Intent intent = new Intent(ForgetActivity.this, Forget2Activity.class);
+                Intent intent = new Intent(ForgetActivity.this, RandomForgetActivity.class);
                 intent.putExtra("email", emailText);
                 ForgetActivity.this.startActivity(intent);
                 overridePendingTransition(R.anim.slide_right, R.anim.slide_out_left);
@@ -54,15 +54,20 @@ public class ForgetActivity extends AppCompatActivity {
     }
 
     public boolean checkEmailDB(String emailText){
+        boolean ay = false;
         RealmResults<User> realmObjects = realm.where(User.class).findAll();
         for (User myRealmObject : realmObjects) {
             if (emailText.equals(myRealmObject.getUserEmail())) {
                 return true;
             }
             else{
-                email.setError("The Email Is Not Valid!");
-                email.requestFocus();
+                ay = true;
             }
+        }
+
+        if(ay){
+            email.setError("The Email Is Not Valid!");
+            email.requestFocus();
         }
         return false;
     }

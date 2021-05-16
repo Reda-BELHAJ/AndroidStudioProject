@@ -1,12 +1,14 @@
 package com.example.miniproject.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.media.Image;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.example.miniproject.JavaMailAPI;
 import com.example.miniproject.R;
 import com.example.miniproject.model.Mission;
 import com.example.miniproject.model.User;
@@ -20,6 +22,7 @@ import io.realm.Realm;
 
 public class MissionAdapter extends BaseAdapter {
     Realm realm;
+    JavaMailAPI send;
 
     private Context context;
     private ArrayList<Mission> missions;
@@ -78,7 +81,8 @@ public class MissionAdapter extends BaseAdapter {
         type.setText(mission.getMissionType());
         description.setText(mission.getDescription());
 
-        if ((role.equals("ResponsableRH") || role.equals("Professeur")) || mission.getEtat().equals("finish") || (role.equals("Directeur") ||  mission.getEtat().equals("onhold"))) {
+        if ((role.equals("ResponsableRH") || role.equals("Professeur")) || mission.getEtat().equals("finish")
+                || (role.equals("Directeur") &&  mission.getEtat().equals("onhold")) ) {
             validateBtn.setVisibility(View.GONE);
             deleteBtn.setVisibility(View.GONE);
         }
@@ -86,8 +90,10 @@ public class MissionAdapter extends BaseAdapter {
         validateBtn.setOnClickListener(v -> {
             if (role.equals("Directeur")) {
                 updateMission(mission.getMissionId(), "onhold");
+                validateBtn.setBackgroundColor(Color.parseColor("#418b8c"));
             } else if (role.equals("President")) {
                 updateMission(mission.getMissionId(), "finish");
+                sendEmail(getUser(mission.getMissionId()).getUserEmail(), getUser(mission.getMissionId()).getFullName(), mission.getMissionName());
             }
         });
 
@@ -119,5 +125,21 @@ public class MissionAdapter extends BaseAdapter {
                 modal.deleteFromRealm();
             }
         });
+    }
+
+    public User getUser(int missionId){
+        Mission result = realm.where(Mission.class).equalTo("missionId", missionId).findFirst();
+        User user = realm.where(User.class).equalTo("userId", result.getUserId()).findFirst();
+
+        return user;
+    }
+
+    public void sendEmail(String emailText ,String fullnameText,String missionName){
+        String message = "Hey " + fullnameText + ",\nWe are happy you signed up for Mini-Projet," +
+                "\nThe mission " + missionName + "has been verified try to download your pdf."+
+                "\nWelcome to Mini-Projet!"+
+                "\nMini-Projet Team";
+        send = new JavaMailAPI(context , emailText, "Email Validation", message);
+        send.execute();
     }
 }

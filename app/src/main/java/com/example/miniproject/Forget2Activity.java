@@ -37,7 +37,8 @@ public class Forget2Activity extends AppCompatActivity {
         System.out.println(email +"++++++++++++++++++++++++");
 
         backarrow.setOnClickListener(v -> {
-            Intent intent = new Intent(Forget2Activity.this, ForgetActivity.class);
+            Intent intent = new Intent(Forget2Activity.this, RandomForgetActivity.class);
+            intent.putExtra("email", email);
             Forget2Activity.this.startActivity(intent);
             overridePendingTransition(R.anim.slide_left, R.anim.slide_out_right);
             finish();

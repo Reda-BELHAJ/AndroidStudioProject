@@ -37,7 +37,7 @@ public class MissionActivity extends AppCompatActivity implements NavigationView
     MaterialCardView card;
 
     TextView small_message;
-    Button All, started, onHold, finished;
+    Button All, started, onHold, finished, mine;
 
     String username, role;
     @Override
@@ -58,6 +58,7 @@ public class MissionActivity extends AppCompatActivity implements NavigationView
         started = findViewById(R.id.started);
         onHold = findViewById(R.id.onHold);
         finished = findViewById(R.id.finished);
+        mine = findViewById(R.id.mine);
 
         username = getIntent().getExtras().getString("USER_NAME");
         role = getIntent().getExtras().getString("ROLE");
@@ -86,14 +87,6 @@ public class MissionActivity extends AppCompatActivity implements NavigationView
             finish();
         });
 
-        if(role.equals("Professeur") || role.equals("ResponsableRH")){
-            small_message.setVisibility(View.GONE);
-            All.setVisibility(View.GONE);
-            onHold.setVisibility(View.GONE);
-            finished.setVisibility(View.GONE);
-            started.setVisibility(View.GONE);
-        }
-
         All.setOnClickListener(v -> {
             missionAdapter = new MissionAdapter(this, getMissions(), role);
             list_view.setAdapter(missionAdapter);
@@ -111,6 +104,11 @@ public class MissionActivity extends AppCompatActivity implements NavigationView
 
         finished.setOnClickListener(v -> {
             missionAdapter = new MissionAdapter(this, getMissionsFilter("finish"), role);
+            list_view.setAdapter(missionAdapter);
+        });
+
+        mine.setOnClickListener(v -> {
+            missionAdapter = new MissionAdapter(this, getMine(), role);
             list_view.setAdapter(missionAdapter);
         });
 
@@ -170,6 +168,24 @@ public class MissionActivity extends AppCompatActivity implements NavigationView
         if(role.equals("Professeur") || role.equals("Directeur")) {
             navigationView.getMenu().findItem(R.id.accounts).setVisible(false);
         }
+        if(role.equals("Professeur") || role.equals("ResponsableRH")){
+            small_message.setVisibility(View.GONE);
+            All.setVisibility(View.GONE);
+            onHold.setVisibility(View.GONE);
+            finished.setVisibility(View.GONE);
+            started.setVisibility(View.GONE);
+            mine.setVisibility(View.GONE);
+        }
+    }
+
+    public ArrayList<Mission> getMine(){
+        ArrayList<Mission> list = new ArrayList<>();
+        User user = realm.where(User.class).equalTo("userName", username).findFirst();
+        int userId = user.getUserId();
+        RealmResults<Mission> realmObjects = realm.where(Mission.class).equalTo("userId", userId).findAll();
+        list.addAll(realm.copyFromRealm(realmObjects));
+
+        return list;
     }
 
     public ArrayList<Mission> getMissions(){

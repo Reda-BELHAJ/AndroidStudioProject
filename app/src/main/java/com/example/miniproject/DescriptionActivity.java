@@ -123,9 +123,13 @@ public class DescriptionActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.R)
     public void createPdf(String NameMission, String type, String address, String transport, String finish, String start) throws FileNotFoundException {
-//        String pdfPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString();
-//        String pdfPath = Environment.getDataDirectory().toString();
-        File file = new File(getFilesDir(), "myMission"+NameMission+".pdf");
+        String pdfPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString();
+        String nameFile = "myMission"+NameMission+".pdf";
+        File file = new File(pdfPath, nameFile);
+
+        // File file = new File(getFilesDir(), "myMission"+NameMission+".pdf");
+        // String pdfPath = Environment.getDataDirectory().toString();
+
         OutputStream outputStream = new FileOutputStream(file);
 
         PdfWriter pdfWriter = new PdfWriter(file);
@@ -185,14 +189,14 @@ public class DescriptionActivity extends AppCompatActivity {
         table.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
 
         // Row4
-        table.addCell(new Cell().add(new Paragraph("Starting Date\n"+start)).setBorder(Border.NO_BORDER));
+        table.addCell(new Cell().add(new Paragraph("Starting Date\n"+start).setBold()).setBorder(Border.NO_BORDER));
         table.addCell(new Cell().add(new Paragraph(NameMission)).setBorder(Border.NO_BORDER));
         table.addCell(new Cell().add(new Paragraph(type)).setBorder(Border.NO_BORDER));
         table.addCell(new Cell().add(new Paragraph(address)).setBorder(Border.NO_BORDER));
         table.addCell(new Cell().add(new Paragraph(transport)).setBorder(Border.NO_BORDER));
 
         // Row5
-        table.addCell(new Cell().add(new Paragraph("Finishing Date\n"+finish)).setBorder(Border.NO_BORDER));
+        table.addCell(new Cell().add(new Paragraph("Finishing Date\n"+finish).setBold()).setBorder(Border.NO_BORDER));
         table.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
         table.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
         table.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));

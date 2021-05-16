@@ -38,12 +38,12 @@
             android:layout_height="match_parent">
 
             <LinearLayout
-                android:layout_width="match_parent"
                 android:id="@+id/layout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="@id/tool_bar"
                 android:orientation="vertical"
-                android:padding="20dp">
+                android:padding="20dp"
+                app:layout_constraintBottom_toBottomOf="@id/tool_bar">
 
                 <TextView
                     android:id="@+id/message_welcome"
@@ -61,8 +61,8 @@
                     android:layout_marginTop="20dp"
                     android:clipToPadding="true"
                     app:cardBackgroundColor="#05210e"
-                    app:cardElevation="2dp"
-                    app:cardCornerRadius="12dp">
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="2dp">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -98,9 +98,9 @@
                     android:id="@+id/small_message2"
                     android:layout_width="wrap_content"
                     android:layout_height="34dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/bungee"
                     android:text="Total Accounts:"
-                    android:layout_marginTop="10dp"
                     android:textColor="#7C7373"
                     android:textSize="20dp" />
 
@@ -110,13 +110,13 @@
                     android:layout_height="wrap_content">
 
                     <com.google.android.material.card.MaterialCardView
-                        app:strokeColor="@color/black"
-                        app:strokeWidth="@dimen/cardview_compat_inset_shadow"
-                        android:layout_marginTop="20dp"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="100dp"
-                        android:layout_marginRight="10dp">
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        app:strokeColor="@color/black"
+                        app:strokeWidth="@dimen/cardview_compat_inset_shadow">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -130,10 +130,10 @@
                                 android:layout_marginStart="12dp"
                                 android:layout_marginLeft="12dp"
                                 android:layout_marginTop="12dp"
-                                android:text="Total Accounts"
-                                android:textSize="11dp"
-                                android:textColor="@color/black"
                                 android:fontFamily="@font/bungee"
+                                android:text="Total Accounts"
+                                android:textColor="@color/black"
+                                android:textSize="11dp"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -174,13 +174,13 @@
                     </com.google.android.material.card.MaterialCardView>
 
                     <com.google.android.material.card.MaterialCardView
-                        app:strokeColor="@color/black"
-                        app:strokeWidth="@dimen/cardview_compat_inset_shadow"
-                        android:layout_marginTop="20dp"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="100dp"
-                        android:layout_marginLeft="10dp">
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="1"
+                        app:strokeColor="@color/black"
+                        app:strokeWidth="@dimen/cardview_compat_inset_shadow">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -193,10 +193,10 @@
                                 android:layout_marginStart="12dp"
                                 android:layout_marginLeft="12dp"
                                 android:layout_marginTop="12dp"
-                                android:text="Invalidate Accounts"
-                                android:textSize="11dp"
-                                android:textColor="@color/black"
                                 android:fontFamily="@font/bungee"
+                                android:text="Invalidate Accounts"
+                                android:textColor="@color/black"
+                                android:textSize="11dp"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -246,9 +246,9 @@
                     android:id="@+id/small_message3"
                     android:layout_width="wrap_content"
                     android:layout_height="34dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/bungee"
                     android:text="Total Missions:"
-                    android:layout_marginTop="10dp"
                     android:textColor="#7C7373"
                     android:textSize="20dp" />
 
@@ -258,13 +258,13 @@
                     android:layout_height="wrap_content">
 
                     <com.google.android.material.card.MaterialCardView
-                        app:strokeColor="@color/black"
-                        app:strokeWidth="@dimen/cardview_compat_inset_shadow"
-                        android:layout_marginTop="20dp"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="100dp"
-                        android:layout_marginRight="10dp">
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        app:strokeColor="@color/black"
+                        app:strokeWidth="@dimen/cardview_compat_inset_shadow">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -278,10 +278,10 @@
                                 android:layout_marginStart="12dp"
                                 android:layout_marginLeft="12dp"
                                 android:layout_marginTop="12dp"
-                                android:text="Total Missions"
-                                android:textSize="11dp"
-                                android:textColor="@color/black"
                                 android:fontFamily="@font/bungee"
+                                android:text="Total Missions"
+                                android:textColor="@color/black"
+                                android:textSize="11dp"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -321,13 +321,13 @@
                     </com.google.android.material.card.MaterialCardView>
 
                     <com.google.android.material.card.MaterialCardView
-                        app:strokeColor="@color/black"
-                        app:strokeWidth="@dimen/cardview_compat_inset_shadow"
-                        android:layout_marginTop="20dp"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="100dp"
-                        android:layout_marginLeft="10dp">
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="1"
+                        app:strokeColor="@color/black"
+                        app:strokeWidth="@dimen/cardview_compat_inset_shadow">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -340,10 +340,10 @@
                                 android:layout_marginStart="12dp"
                                 android:layout_marginLeft="12dp"
                                 android:layout_marginTop="12dp"
-                                android:text="Finished Missions"
-                                android:textSize="11dp"
-                                android:textColor="@color/black"
                                 android:fontFamily="@font/bungee"
+                                android:text="Finished Missions"
+                                android:textColor="@color/black"
+                                android:textSize="11dp"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -394,13 +394,13 @@
                     android:layout_height="wrap_content">
 
                     <com.google.android.material.card.MaterialCardView
-                        app:strokeColor="@color/black"
-                        app:strokeWidth="@dimen/cardview_compat_inset_shadow"
-                        android:layout_marginTop="20dp"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="100dp"
-                        android:layout_marginRight="10dp">
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        app:strokeColor="@color/black"
+                        app:strokeWidth="@dimen/cardview_compat_inset_shadow">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -414,10 +414,10 @@
                                 android:layout_marginStart="12dp"
                                 android:layout_marginLeft="12dp"
                                 android:layout_marginTop="12dp"
-                                android:text="OnHold Missions"
-                                android:textSize="11dp"
-                                android:textColor="@color/black"
                                 android:fontFamily="@font/bungee"
+                                android:text="OnHold Missions"
+                                android:textColor="@color/black"
+                                android:textSize="11dp"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -457,13 +457,13 @@
                     </com.google.android.material.card.MaterialCardView>
 
                     <com.google.android.material.card.MaterialCardView
-                        app:strokeColor="@color/black"
-                        app:strokeWidth="@dimen/cardview_compat_inset_shadow"
-                        android:layout_marginTop="20dp"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="100dp"
-                        android:layout_marginLeft="10dp">
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="1"
+                        app:strokeColor="@color/black"
+                        app:strokeWidth="@dimen/cardview_compat_inset_shadow">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -476,10 +476,10 @@
                                 android:layout_marginStart="12dp"
                                 android:layout_marginLeft="12dp"
                                 android:layout_marginTop="12dp"
-                                android:text="In process Missions"
-                                android:textSize="11dp"
-                                android:textColor="@color/black"
                                 android:fontFamily="@font/bungee"
+                                android:text="In process Missions"
+                                android:textColor="@color/black"
+                                android:textSize="11dp"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -528,9 +528,9 @@
                     android:id="@+id/small_message"
                     android:layout_width="wrap_content"
                     android:layout_height="34dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/bungee"
                     android:text="Try to go to:"
-                    android:layout_marginTop="10dp"
                     android:textColor="#7C7373"
                     android:textSize="20dp" />
 
@@ -539,11 +539,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:layout_marginTop="20dp"
-                    android:clipToPadding="true"
                     android:clickable="true"
+                    android:clipToPadding="true"
                     app:cardBackgroundColor="#184d26"
-                    app:cardElevation="2dp"
-                    app:cardCornerRadius="12dp">
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="2dp">
+
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
@@ -551,9 +552,9 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="70dp"
+                            android:layout_marginLeft="8dp"
                             android:fontFamily="@font/bungee"
                             android:padding="10dp"
-                            android:layout_marginLeft="8dp"
                             android:text="Missions"
                             android:textColor="@color/white"
                             android:textSize="30dp" />
@@ -561,12 +562,12 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
                             android:fontFamily="@font/bungee"
                             android:padding="10dp"
-                            android:layout_marginLeft="8dp"
                             android:text="Tap"
                             android:textColor="@color/white"
-                            android:textSize="12dp"/>
+                            android:textSize="12dp" />
                     </RelativeLayout>
 
 
@@ -578,11 +579,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:layout_marginTop="20dp"
-                    android:clipToPadding="true"
                     android:clickable="true"
+                    android:clipToPadding="true"
                     app:cardBackgroundColor="#10274d"
-                    app:cardElevation="2dp"
-                    app:cardCornerRadius="12dp">
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="2dp">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -596,19 +597,129 @@
                             android:padding="10dp"
                             android:text="Accounts"
                             android:textColor="@color/white"
-                            android:textSize="30dp"/>
+                            android:textSize="30dp" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/bungee"
                             android:layout_marginLeft="8dp"
+                            android:fontFamily="@font/bungee"
                             android:padding="10dp"
                             android:text="Tap"
                             android:textColor="@color/white"
-                            android:textSize="12dp"/>
+                            android:textSize="12dp" />
 
                     </RelativeLayout>
 
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="34dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/bungee"
+                    android:text="Latest Mission:"
+                    android:textColor="#7C7373"
+                    android:textSize="20dp" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardMission"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:clipToPadding="true"
+                    android:clickable="true"
+                    app:cardBackgroundColor="@color/black">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="16dp"
+                            android:paddingBottom="8dp">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:layout_weight="1.0"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/title"
+                                    style="?attr/textAppearanceHeadline6"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Title goes here"
+                                    android:textColor="@color/white"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/type"
+                                    android:layout_width="246dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:text="Secondary message card layouts can vary to support the types of content they contain. The following elements are commonly found among that variety."
+                                    android:textColor="@color/white" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            android:maxLines="2"
+                            android:text="Lorem ipsum dolor sit amet, nec no nominavi scaevola. Pu."
+                            android:textColor="@color/white" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp">
+
+                            <TextView
+                                android:id="@+id/etat"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="bottom"
+                                android:layout_margin="16dp"
+                                android:layout_weight="1"
+                                android:text="In process "
+                                android:textColor="@color/white"
+                                android:textSize="18dp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/notFound"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="10dp"
+                    app:strokeColor="@color/black"
+                    app:strokeWidth="@dimen/cardview_compat_inset_shadow">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/bungee"
+                        android:padding="10dp"
+                        android:text="Try to create your first mission!"
+                        android:textColor="@color/black"
+                        android:textSize="15dp" />
                 </com.google.android.material.card.MaterialCardView>
 
             </LinearLayout>
