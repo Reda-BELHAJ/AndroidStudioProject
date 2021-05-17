@@ -137,7 +137,7 @@
                 android:layout_marginTop="15dp"
                 android:background="#272B2B"
                 android:fontFamily="@font/baloo"
-                android:text="Sign Up"
+                android:text="Next"
                 android:textColor="@color/white" />
 
             <Button

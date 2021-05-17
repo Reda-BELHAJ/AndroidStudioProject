@@ -67,8 +67,6 @@ public class SignUpActivity extends AppCompatActivity {
             finish();
         });
 
-
-
         signup.setOnClickListener(v -> {
 
             String emailText = email.getEditText().getText().toString();
@@ -85,7 +83,6 @@ public class SignUpActivity extends AppCompatActivity {
                     && checkPasswords(passwordText, con_passwordText)) {
 
                 addUser();
-//                sendEmail(emailText, fullnameText, usernameText, passwordText);
 
                 Intent intent = new Intent(SignUpActivity.this, SignUpActivity2.class);
                 SignUpActivity.this.startActivity(intent);

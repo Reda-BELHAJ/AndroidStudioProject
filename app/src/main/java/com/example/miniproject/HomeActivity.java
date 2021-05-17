@@ -155,6 +155,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             case R.id.accounts:
                 gotoAccounts();
                 break;
+            case R.id.charts:
+                gotoCharts();
+                break;
             case R.id.profile:
                 gotoPrfile();
                 break;
@@ -172,19 +175,30 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void visibility(String role){
-        if(role.equals("Professeur") || role.equals("Directeur")){
+        if(role.equals("Professeur") || role.equals("Directeur") || role.equals("President")){
             navigationView.getMenu().findItem(R.id.accounts).setVisible(false);
             card3.setVisibility(View.GONE);
         }
-        if(!(role.equals("ResponsableRH") || role.equals("President"))){
+        if(!(role.equals("ResponsableRH"))){
             accountslayout.setVisibility(View.GONE);
             small_message2.setVisibility(View.GONE);
         }
         if(!(role.equals("Directeur") || role.equals("President") )){
+            navigationView.getMenu().findItem(R.id.charts).setVisible(false);
             missionlayout.setVisibility(View.GONE);
             missionlayout2.setVisibility(View.GONE);
             small_message3.setVisibility(View.GONE);
         }
+    }
+
+    public void gotoCharts(){
+        Intent intent = new Intent(HomeActivity.this, PieChartActivity.class);
+        intent.putExtra("USER_NAME", username);
+        intent.putExtra("ROLE", role);
+        intent.putExtra("FLAG","");
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_right, R.anim.slide_out_left);
+        finish();
     }
 
     public void gotoMissions(){

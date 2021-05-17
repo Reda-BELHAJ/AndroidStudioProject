@@ -15,6 +15,11 @@
             android:id="@+id/accounts"
             android:icon="@drawable/people_icon"
             android:title="Accounts" />
+
+        <item
+            android:id="@+id/charts"
+            android:icon="@drawable/pie_icon"
+            android:title="Charts" />
     </group>
 
 

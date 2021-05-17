@@ -8,58 +8,65 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.TextView;
 
-import com.example.miniproject.adapter.AccountAdapter;
-import com.example.miniproject.adapter.MissionAdapter;
+import com.anychart.APIlib;
+import com.anychart.AnyChart;
+import com.anychart.AnyChartView;
+import com.anychart.chart.common.dataentry.DataEntry;
+import com.anychart.chart.common.dataentry.ValueDataEntry;
+import com.anychart.charts.Pie;
+import com.anychart.enums.Align;
+import com.anychart.enums.LegendLayout;
+import com.anychart.graphics.vector.Fill;
+import com.anychart.graphics.vector.GradientKey;
+import com.anychart.graphics.vector.SolidFill;
+import com.anychart.palettes.RangeColors;
 import com.example.miniproject.model.Mission;
-import com.example.miniproject.model.User;
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import io.realm.Realm;
-import io.realm.RealmResults;
 
-public class AccountActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    Realm realm;
+public class PieChartActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
-    ListView list_view;
 
-    Button All, Notvalidate;
+    String username, role, flag;
+    AnyChartView pieChart;
 
-    String username, role;
-    TextView count;
+    MaterialCardView card1, card3;
 
-    AccountAdapter accountAdapter, accountAdapter1;
+    Realm realm;
+    String[] missionType1 = {"Organization of the Forum", "Academic Orientation", "Conference", "Discovery Day" , "Academic support" , "Exchange of Practices", "Presentation"};
+    String[] missionType2 ={"Bus", "Train", "Airplane", "Taxi", "Transit"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_account);
+        setContentView(R.layout.activity_pie_chart);
         realm = Realm.getDefaultInstance();
 
-        int id = R.id.accounts;
+        int id = R.id.charts;
+
+        username = getIntent().getExtras().getString("USER_NAME");
+        role = getIntent().getExtras().getString("ROLE");
 
         drawerLayout = findViewById(R.id.drawler_layout);
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.tool_bar);
-        list_view = findViewById(R.id.list_view);
-        All = findViewById(R.id.All);
-        Notvalidate = findViewById(R.id.Notvalidate);
-        count = findViewById(R.id.count);
 
-        username = getIntent().getExtras().getString("USER_NAME");
-        role = getIntent().getExtras().getString("ROLE");
+        pieChart = findViewById(R.id.pieChart);
+        card1 = findViewById(R.id.card1);
+        card3 = findViewById(R.id.card3);
 
         navigationView.bringToFront();
 
@@ -73,20 +80,64 @@ public class AccountActivity extends AppCompatActivity implements NavigationView
 
         navigationView.getMenu().findItem(R.id.profile).setTitle(username);
 
-        accountAdapter = new AccountAdapter(this, getUsers());
-        accountAdapter1 = new AccountAdapter(this, getUsersFilter());
-
-        list_view.setAdapter(accountAdapter);
-
-        All.setOnClickListener(v -> list_view.setAdapter(accountAdapter));
-        Notvalidate.setOnClickListener(v -> list_view.setAdapter(accountAdapter1));
-
-        count.setText(getUsersFilter().size() + " Not Validate Account!");
-
-        accountAdapter.notifyDataSetChanged();
-        accountAdapter1.notifyDataSetChanged();
+        flag = getIntent().getExtras().getString("FLAG");
 
         visibility();
+
+        if("type2".equals(flag)){
+            setupPieChart(missionType2, "typeTransport");
+        }
+        else if ("type1".equals(flag)){
+            setupPieChart(missionType1, "missionType");
+        }
+
+        card1.setOnClickListener(v -> {
+            update("type1");
+        });
+
+        card3.setOnClickListener(v -> {
+            update("type2");
+        });
+    }
+
+    public void setupPieChart(String[] missionType, String field){
+        Pie pie = AnyChart.pie();
+
+        List<DataEntry> dataEntries = new ArrayList<>();
+        int[] missionVal = getMission(missionType, field);
+
+        for(int i = 0; i < missionType.length; i++){
+            dataEntries.add(new ValueDataEntry(missionType[i], missionVal[i]));
+        }
+
+        pie.data(dataEntries);
+
+        pie.legend()
+                .position("center-bottom")
+                .itemsLayout(LegendLayout.HORIZONTAL_EXPANDABLE)
+                .align(Align.CENTER);
+
+        pieChart.setChart(pie);
+        pieChart.invalidate();
+    }
+
+    public void update(String flag){
+        Intent intent = getIntent();
+        intent.putExtra("FLAG",flag);
+        finish();
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_right, R.anim.slide_out_left);
+    }
+
+    public int[] getMission(String[] missionType, String field){
+        int[] missionValues = new int[missionType.length];
+        int i = 0;
+
+        for(String item: missionType){
+            missionValues[i] = realm.where(Mission.class).equalTo(field, item).findAll().size();
+            i++;
+        }
+        return missionValues;
     }
 
     @Override
@@ -99,15 +150,15 @@ public class AccountActivity extends AppCompatActivity implements NavigationView
                 gotoMissions();
                 break;
             case R.id.accounts:
+                gotoAccounts();
                 break;
             case R.id.charts:
-                gotoCharts();
                 break;
             case R.id.profile:
                 gotoPrfile();
                 break;
             case R.id.logout:
-                Intent intent = new Intent(AccountActivity.this, MainActivity.class);
+                Intent intent = new Intent(PieChartActivity.this, MainActivity.class);
 
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_left, R.anim.slide_out_right);
@@ -124,22 +175,13 @@ public class AccountActivity extends AppCompatActivity implements NavigationView
             navigationView.getMenu().findItem(R.id.accounts).setVisible(false);
         }
         if(!(role.equals("Directeur") || role.equals("President") )){
+            navigationView.getMenu().findItem(R.id.nav_missions).setVisible(false);
             navigationView.getMenu().findItem(R.id.charts).setVisible(false);
         }
     }
 
-    public void gotoCharts(){
-        Intent intent = new Intent(AccountActivity.this, PieChartActivity.class);
-        intent.putExtra("USER_NAME", username);
-        intent.putExtra("ROLE", role);
-        intent.putExtra("FLAG","");
-        startActivity(intent);
-        overridePendingTransition(R.anim.slide_right, R.anim.slide_out_left);
-        finish();
-    }
-
     public void gotoHome(){
-        Intent intent = new Intent(AccountActivity.this, HomeActivity.class);
+        Intent intent = new Intent(PieChartActivity.this, HomeActivity.class);
         intent.putExtra("USER_NAME", username);
         intent.putExtra("ROLE", role);
         startActivity(intent);
@@ -148,7 +190,7 @@ public class AccountActivity extends AppCompatActivity implements NavigationView
     }
 
     public void gotoMissions(){
-        Intent intent = new Intent(AccountActivity.this, MissionActivity.class);
+        Intent intent = new Intent(PieChartActivity.this, MissionActivity.class);
         intent.putExtra("USER_NAME", username);
         intent.putExtra("ROLE", role);
         startActivity(intent);
@@ -156,27 +198,17 @@ public class AccountActivity extends AppCompatActivity implements NavigationView
         finish();
     }
 
-    public ArrayList<User> getUsers(){
-        ArrayList<User> list = new ArrayList<>();
-
-        RealmResults<User> users = realm.where(User.class).notEqualTo("userName", username).findAll();
-        list.addAll(realm.copyFromRealm(users));
-
-        return list;
-    }
-
-    public ArrayList<User> getUsersFilter(){
-        ArrayList<User> list = new ArrayList<>();
-
-        RealmResults<User> users = realm.where(User.class).notEqualTo("userName", username).equalTo("etat", false).findAll();
-
-        list.addAll(realm.copyFromRealm(users));
-
-        return list;
+    public void gotoAccounts(){
+        Intent intent = new Intent(PieChartActivity.this, AccountActivity.class);
+        intent.putExtra("USER_NAME", username);
+        intent.putExtra("ROLE", role);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_right, R.anim.slide_out_left);
+        finish();
     }
 
     public void gotoPrfile(){
-        Intent intent = new Intent(AccountActivity.this, UpdateActivity.class);
+        Intent intent = new Intent(PieChartActivity.this, UpdateActivity.class);
         intent.putExtra("USER_NAME", username);
         intent.putExtra("ROLE", role);
         startActivity(intent);

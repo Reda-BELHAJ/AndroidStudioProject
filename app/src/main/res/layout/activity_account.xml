@@ -40,7 +40,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="20dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="20dp"
                 app:layout_constraintBottom_toBottomOf="@id/tool_bar">
 
                 <TextView

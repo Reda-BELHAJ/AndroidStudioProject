@@ -139,6 +139,9 @@ public class MissionActivity extends AppCompatActivity implements NavigationView
             case R.id.accounts:
                 gotoAccounts();
                 break;
+            case R.id.charts:
+                gotoCharts();
+                break;
             case R.id.profile:
                 gotoPrfile();
                 break;
@@ -155,6 +158,16 @@ public class MissionActivity extends AppCompatActivity implements NavigationView
         return true;
     }
 
+    public void gotoCharts(){
+        Intent intent = new Intent(MissionActivity.this, PieChartActivity.class);
+        intent.putExtra("USER_NAME", username);
+        intent.putExtra("ROLE", role);
+        intent.putExtra("FLAG","");
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_right, R.anim.slide_out_left);
+        finish();
+    }
+
     public void gotoHome(){
         Intent intent = new Intent(MissionActivity.this, HomeActivity.class);
         intent.putExtra("USER_NAME", username);
@@ -165,10 +178,12 @@ public class MissionActivity extends AppCompatActivity implements NavigationView
     }
 
     public void visibility(String role){
-        if(role.equals("Professeur") || role.equals("Directeur")) {
+        if(role.equals("Professeur") || role.equals("Directeur") || role.equals("President")) {
             navigationView.getMenu().findItem(R.id.accounts).setVisible(false);
         }
         if(role.equals("Professeur") || role.equals("ResponsableRH")){
+            navigationView.getMenu().findItem(R.id.charts).setVisible(false);
+
             small_message.setVisibility(View.GONE);
             All.setVisibility(View.GONE);
             onHold.setVisibility(View.GONE);
@@ -232,4 +247,13 @@ public class MissionActivity extends AppCompatActivity implements NavigationView
         finish();
     }
 
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            gotoHome();
+            super.onBackPressed();
+        }
+    }
 }

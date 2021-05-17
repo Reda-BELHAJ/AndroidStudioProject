@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/icon_mini_projet"
         android:supportsRtl="true"
         android:theme="@style/Theme.MiniProject">
-        <activity android:name=".RandomForgetActivity"></activity>
+        <activity android:name=".PieChartActivity" />
+        <activity android:name=".RandomForgetActivity" />
         <activity android:name=".UpdateActivity" />
         <activity android:name=".DescriptionActivity" />
         <activity android:name=".AccountActivity" />
