@@ -51,7 +51,7 @@
                     android:layout_marginTop="20dp"
                     android:clickable="true"
                     android:clipToPadding="true"
-                    app:cardBackgroundColor="#184d26"
+                    app:cardBackgroundColor="@color/black"
                     app:cardCornerRadius="12dp"
                     app:cardElevation="2dp">
 
@@ -91,7 +91,7 @@
                     android:layout_marginTop="15dp"
                     android:clickable="true"
                     android:clipToPadding="true"
-                    app:cardBackgroundColor="#10274d"
+                    app:cardBackgroundColor="@color/black"
                     app:cardCornerRadius="12dp"
                     app:cardElevation="2dp">
 
@@ -125,8 +125,9 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.anychart.AnyChartView
+                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
-                    android:layout_height="440dp"
+                    android:layout_height="450dp"
                     android:id="@+id/pieChart"/>
 
             </LinearLayout>

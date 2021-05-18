@@ -8,12 +8,9 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 
-import com.anychart.APIlib;
 import com.anychart.AnyChart;
 import com.anychart.AnyChartView;
 import com.anychart.chart.common.dataentry.DataEntry;
@@ -21,10 +18,7 @@ import com.anychart.chart.common.dataentry.ValueDataEntry;
 import com.anychart.charts.Pie;
 import com.anychart.enums.Align;
 import com.anychart.enums.LegendLayout;
-import com.anychart.graphics.vector.Fill;
-import com.anychart.graphics.vector.GradientKey;
-import com.anychart.graphics.vector.SolidFill;
-import com.anychart.palettes.RangeColors;
+
 import com.example.miniproject.model.Mission;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.navigation.NavigationView;

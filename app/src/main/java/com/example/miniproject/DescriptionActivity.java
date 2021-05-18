@@ -94,7 +94,8 @@ public class DescriptionActivity extends AppCompatActivity {
                         getMission(missionId).getAdresse(),
                         getMission(missionId).getTypeTransport(),
                         getMission(missionId).getFinMission().toString(),
-                        getMission(missionId).getDebutMission().toString()
+                        getMission(missionId).getDebutMission().toString(),
+                        getUser(missionId)
                         );
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -121,8 +122,15 @@ public class DescriptionActivity extends AppCompatActivity {
         return realmObjects;
     }
 
+    public User getUser(int missionId){
+        int userId = getMission(missionId).getUserId();
+        User user = realm.where(User.class).equalTo("userId", userId).findFirst();
+
+        return user;
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.R)
-    public void createPdf(String NameMission, String type, String address, String transport, String finish, String start) throws FileNotFoundException {
+    public void createPdf(String NameMission, String type, String address, String transport, String finish, String start, User user) throws FileNotFoundException {
         String pdfPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString();
         String nameFile = "myMission"+NameMission+".pdf";
         File file = new File(pdfPath, nameFile);
@@ -182,22 +190,35 @@ public class DescriptionActivity extends AppCompatActivity {
         table.addCell(new Cell().add(new Paragraph("Address")).setFontColor(ColorConstants.WHITE).setBackgroundColor(new DeviceRgb(13, 20, 145)).setBorder(Border.NO_BORDER));
         table.addCell(new Cell().add(new Paragraph("Transport")).setFontColor(ColorConstants.WHITE).setBackgroundColor(new DeviceRgb(13, 20, 145)).setBorder(Border.NO_BORDER));
 
-        // Empty
-        table.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
-        table.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
-        table.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
-        table.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
-
         // Row4
-        table.addCell(new Cell().add(new Paragraph("Starting Date\n"+start).setBold()).setBorder(Border.NO_BORDER));
-        table.addCell(new Cell().add(new Paragraph(NameMission)).setBorder(Border.NO_BORDER));
-        table.addCell(new Cell().add(new Paragraph(type)).setBorder(Border.NO_BORDER));
-        table.addCell(new Cell().add(new Paragraph(address)).setBorder(Border.NO_BORDER));
-        table.addCell(new Cell().add(new Paragraph(transport)).setBorder(Border.NO_BORDER));
+        table.addCell(new Cell().add(new Paragraph(NameMission)));
+        table.addCell(new Cell().add(new Paragraph(type)));
+        table.addCell(new Cell().add(new Paragraph(address)));
+        table.addCell(new Cell().add(new Paragraph(transport)));
 
         // Row5
-        table.addCell(new Cell().add(new Paragraph("Finishing Date\n"+finish).setBold()).setBorder(Border.NO_BORDER));
+        table.addCell(new Cell(2,1).add(new Paragraph("User")).setFontColor(new DeviceRgb(13, 20, 145)).setFontSize(24).setBold().setBorder(Border.NO_BORDER));
+        table.addCell(new Cell().add(new Paragraph("FullName")).setFontColor(ColorConstants.WHITE).setBackgroundColor(new DeviceRgb(13, 20, 145)).setBorder(Border.NO_BORDER));
+        table.addCell(new Cell().add(new Paragraph("Email")).setFontColor(ColorConstants.WHITE).setBackgroundColor(new DeviceRgb(13, 20, 145)).setBorder(Border.NO_BORDER));
+        table.addCell(new Cell().add(new Paragraph("UserName")).setFontColor(ColorConstants.WHITE).setBackgroundColor(new DeviceRgb(13, 20, 145)).setBorder(Border.NO_BORDER));
+        table.addCell(new Cell().add(new Paragraph("Role")).setFontColor(ColorConstants.WHITE).setBackgroundColor(new DeviceRgb(13, 20, 145)).setBorder(Border.NO_BORDER));
+
+        table.addCell(new Cell().add(new Paragraph(user.getFullName())));
+        table.addCell(new Cell().add(new Paragraph(user.getUserEmail())));
+        table.addCell(new Cell().add(new Paragraph(user.getUserName())));
+        table.addCell(new Cell().add(new Paragraph(user.getRole())));
+
+        Cell blank = new Cell(5, 5).add(new Paragraph("\n")).setBorder(Border.NO_BORDER);
+        table.addCell(blank);
+
+        table.addCell(new Cell().add(new Paragraph("Starting Date").setBold()).setBorder(Border.NO_BORDER));
+        table.addCell(new Cell().add(new Paragraph(start)).setBorder(Border.NO_BORDER));
         table.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
+        table.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
+        table.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
+
+        table.addCell(new Cell().add(new Paragraph("Finishing Date").setBold()).setBorder(Border.NO_BORDER));
+        table.addCell(new Cell().add(new Paragraph(finish)).setBorder(Border.NO_BORDER));
         table.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
         table.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
         table.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
@@ -208,7 +229,8 @@ public class DescriptionActivity extends AppCompatActivity {
         Paragraph para = new Paragraph("TERMS\n"+
                 "Copyright 2021 UIR.\n"+
                 " Tous droits réservés.");
-        para.setMarginTop(200);
+
+        para.setMarginTop(150);
 
         document.add(para);
         document.close();
