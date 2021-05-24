@@ -9,3 +9,9 @@ API and libraries used:
 - iText JAVA PDF library
 
 Min Sdk Version: 26
+
+## Prototype
+
+![prototype text](https://github.com/Reda-BELHAJ/AndroidStudioProject/blob/master/mobileInt.JPG)
+![prototype text](https://github.com/Reda-BELHAJ/AndroidStudioProject/blob/master/mobileInt2.JPG)
+![prototype text](https://github.com/Reda-BELHAJ/AndroidStudioProject/blob/master/mobileInt3.JPG)
