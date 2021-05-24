@@ -63,7 +63,15 @@ public class UpdateActivity extends AppCompatActivity {
         update.setOnClickListener(v -> {
             if (checkNotEmpty(email.getEditText().toString(), fullname.getEditText().toString(), password.getEditText().toString(), confirm_password.getEditText().toString() )
                 || checkPasswords(password.getEditText().toString(), confirm_password.getEditText().toString())){
-                updateUser(getUser(), getUser().getUserId(), getUser().getUserName(), password.getEditText().toString(), email.getEditText().toString(), fullname.getEditText().toString(), getUser().getRole() );
+
+                updateUser(getUser(), getUser().getUserName(), password.getEditText().getText().toString(), email.getEditText().getText().toString(), fullname.getEditText().getText().toString(), getUser().getRole() );
+
+                Intent intent = new Intent(UpdateActivity.this, HomeActivity.class);
+                intent.putExtra("USER_NAME", user_name);
+                intent.putExtra("ROLE", role);
+                UpdateActivity.this.startActivity(intent);
+                overridePendingTransition(R.anim.slide_left, R.anim.slide_out_right);
+                finish();
             }
         });
     }
@@ -112,12 +120,11 @@ public class UpdateActivity extends AppCompatActivity {
         return user;
     }
 
-    private void updateUser(User user, int id ,String username, String password, String mail, String fullname, String role) {
+    private void updateUser(User user,String username, String password, String mail, String fullname, String role) {
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
 
-                user.setUserId(id);
                 user.setUserName(username);
                 user.setEtat(true);
                 user.setPassword(password);
@@ -128,5 +135,15 @@ public class UpdateActivity extends AppCompatActivity {
                 realm.copyToRealmOrUpdate(user);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(UpdateActivity.this, HomeActivity.class);
+        intent.putExtra("USER_NAME", user_name);
+        intent.putExtra("ROLE", role);
+        UpdateActivity.this.startActivity(intent);
+        overridePendingTransition(R.anim.slide_left, R.anim.slide_out_right);
+        finish();
     }
 }

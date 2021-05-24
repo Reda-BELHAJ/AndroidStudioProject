@@ -1,11 +1,13 @@
 package com.example.miniproject.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.example.miniproject.AccountActivity;
 import com.example.miniproject.JavaMailAPI;
 import com.example.miniproject.R;
 import com.example.miniproject.model.Mission;
@@ -23,9 +25,14 @@ public class AccountAdapter extends BaseAdapter {
     private Context context;
     private ArrayList<User> users;
 
-    public AccountAdapter(Context context, ArrayList<User> users) {
+    String user1;
+    String role1;
+
+    public AccountAdapter(Context context, ArrayList<User> users, String user1, String role1) {
         this.context = context;
         this.users = users;
+        this.user1 = user1;
+        this.role1 = role1;
     }
 
     @Override
@@ -70,6 +77,7 @@ public class AccountAdapter extends BaseAdapter {
             if(! user.getEtat()) {
                 updateUser(user, user.getUserId(), user.getUserName(), user.getPassword(), user.getUserEmail(), user.getFullName(), user.getRole());
                 sendEmail(user.getUserEmail(), user.getFullName(), user.getUserName(), user.getPassword());
+                update();
             }
         });
 
@@ -92,6 +100,16 @@ public class AccountAdapter extends BaseAdapter {
                 realm.copyToRealmOrUpdate(modal);
             }
         });
+    }
+
+    public void update(){
+        AccountActivity ac = (AccountActivity) context;
+        Intent intent = ac.getIntent();
+        intent.putExtra("USER_NAME", user1);
+        intent.putExtra("ROLE", role1);
+        ac.finish();
+        ac.startActivity(intent);
+        ac.overridePendingTransition(R.anim.slide_right, R.anim.slide_out_left);
     }
 
     public void sendEmail(String emailText ,String fullnameText,String usernameText,String passwordText){

@@ -122,6 +122,16 @@ public class DescriptionActivity extends AppCompatActivity {
         return realmObjects;
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(DescriptionActivity.this, MissionActivity.class);
+        intent.putExtra("USER_NAME", username);
+        intent.putExtra("ROLE", role);
+        DescriptionActivity.this.startActivity(intent);
+        overridePendingTransition(R.anim.slide_left, R.anim.slide_out_right);
+        finish();
+    }
+
     public User getUser(int missionId){
         int userId = getMission(missionId).getUserId();
         User user = realm.where(User.class).equalTo("userId", userId).findFirst();

@@ -73,8 +73,8 @@ public class AccountActivity extends AppCompatActivity implements NavigationView
 
         navigationView.getMenu().findItem(R.id.profile).setTitle(username);
 
-        accountAdapter = new AccountAdapter(this, getUsers());
-        accountAdapter1 = new AccountAdapter(this, getUsersFilter());
+        accountAdapter = new AccountAdapter(this, getUsers(),username, role );
+        accountAdapter1 = new AccountAdapter(this, getUsersFilter(),username, role);
 
         list_view.setAdapter(accountAdapter);
 

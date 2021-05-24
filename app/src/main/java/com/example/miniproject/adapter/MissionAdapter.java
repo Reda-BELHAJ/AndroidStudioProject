@@ -1,6 +1,7 @@
 package com.example.miniproject.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.media.Image;
 import android.view.View;
@@ -8,7 +9,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.example.miniproject.AccountActivity;
 import com.example.miniproject.JavaMailAPI;
+import com.example.miniproject.MissionActivity;
 import com.example.miniproject.R;
 import com.example.miniproject.model.Mission;
 import com.example.miniproject.model.User;
@@ -28,10 +31,13 @@ public class MissionAdapter extends BaseAdapter {
     private ArrayList<Mission> missions;
     private String role;
 
-    public MissionAdapter(Context context, ArrayList<Mission> missions, String role) {
+    String user1;
+
+    public MissionAdapter(Context context, ArrayList<Mission> missions, String role, String user1) {
         this.context = context;
         this.missions = missions;
         this.role = role;
+        this.user1 = user1;
     }
 
     @Override
@@ -91,15 +97,18 @@ public class MissionAdapter extends BaseAdapter {
             if (role.equals("Directeur")) {
                 updateMission(mission.getMissionId(), "onhold");
                 validateBtn.setBackgroundColor(Color.parseColor("#418b8c"));
+                update();
             } else if (role.equals("President")) {
                 updateMission(mission.getMissionId(), "finish");
                 sendEmail(getUser(mission.getMissionId()).getUserEmail(), getUser(mission.getMissionId()).getFullName(), mission.getMissionName(), "verified try to download your pdf.");
+                update();
             }
         });
 
         deleteBtn.setOnClickListener(v -> {
             deleteMission(mission.getMissionId());
             sendEmail(getUser(mission.getMissionId()).getUserEmail(), getUser(mission.getMissionId()).getFullName(), mission.getMissionName(), "deleted.");
+            update();
         });
 
         return convertView;
@@ -142,5 +151,15 @@ public class MissionAdapter extends BaseAdapter {
                 "\nMini-Projet Team";
         send = new JavaMailAPI(context , emailText, "Email Validation", message);
         send.execute();
+    }
+
+    public void update(){
+        MissionActivity ac = (MissionActivity) context;
+        Intent intent = ac.getIntent();
+        intent.putExtra("USER_NAME", user1);
+        intent.putExtra("ROLE", role);
+        ac.finish();
+        ac.startActivity(intent);
+        ac.overridePendingTransition(R.anim.slide_right, R.anim.slide_out_left);
     }
 }

@@ -75,7 +75,7 @@ public class MissionActivity extends AppCompatActivity implements NavigationView
 
         navigationView.getMenu().findItem(R.id.profile).setTitle(username);
 
-        missionAdapter = new MissionAdapter(this, getMissions(), role);
+        missionAdapter = new MissionAdapter(this, getMissions(), role,username);
         list_view.setAdapter(missionAdapter);
 
         card.setOnClickListener(v -> {
@@ -88,27 +88,27 @@ public class MissionActivity extends AppCompatActivity implements NavigationView
         });
 
         All.setOnClickListener(v -> {
-            missionAdapter = new MissionAdapter(this, getMissions(), role);
+            missionAdapter = new MissionAdapter(this, getMissions(), role,username);
             list_view.setAdapter(missionAdapter);
         });
 
         started.setOnClickListener(v -> {
-            missionAdapter = new MissionAdapter(this, getMissionsFilter("start"), role);
+            missionAdapter = new MissionAdapter(this, getMissionsFilter("start"), role,username);
             list_view.setAdapter(missionAdapter);
         });
 
         onHold.setOnClickListener(v -> {
-            missionAdapter = new MissionAdapter(this, getMissionsFilter("onhold"), role);
+            missionAdapter = new MissionAdapter(this, getMissionsFilter("onhold"), role,username);
             list_view.setAdapter(missionAdapter);
         });
 
         finished.setOnClickListener(v -> {
-            missionAdapter = new MissionAdapter(this, getMissionsFilter("finish"), role);
+            missionAdapter = new MissionAdapter(this, getMissionsFilter("finish"), role,username);
             list_view.setAdapter(missionAdapter);
         });
 
         mine.setOnClickListener(v -> {
-            missionAdapter = new MissionAdapter(this, getMine(), role);
+            missionAdapter = new MissionAdapter(this, getMine(), role,username);
             list_view.setAdapter(missionAdapter);
         });
 
